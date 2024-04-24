@@ -1,6 +1,5 @@
 # Piaskownica do testowania
-##Żeby odpalić projekt należy:
-
+## Żeby odpalić projekt należy:
   Zaintalowć Pythona w wersji 3.12: https://www.python.org/downloads/
 
   Sklonować repo:
