@@ -1,6 +1,5 @@
 import pygame
-import Time
-
+import src.Time as Time
 Input = []
 
 def main():
@@ -16,8 +15,6 @@ def main():
     pygame.font.init()
     font = pygame.font.SysFont('Comic Sans MS', 18)
 
-    print(pygame.K_LCTRL)
-    print(pygame.KMOD_CTRL)
 
     fps = 0
 
@@ -45,8 +42,6 @@ def main():
 
             #Input Handling
             if event.type == pygame.KEYDOWN:
-
-                print(event.mod)
 
                 #Check for ctrl pressed, z jakiegoś podowu żaden z enumow nie daje liczby ktorej potrzebuje
                 if event.mod == 64 or event.mod == 128:
