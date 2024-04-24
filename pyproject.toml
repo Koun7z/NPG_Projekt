@@ -1,0 +1,9 @@
+[project]
+name = "Keyboard Input Test"
+description = "Just a quick proof of concept"
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "pygame>=2.5.2",
+]
