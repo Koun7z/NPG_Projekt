@@ -91,7 +91,7 @@ def main():
         # flip() the display to put your work on screen
         pygame.display.flip()
 
-        Time.Update(clock.tick(480) / 1000)  # limits FPS to 240
+        Time.Update(clock.tick(240) / 1000)  # limits FPS to 240
 
     pygame.quit()
 
