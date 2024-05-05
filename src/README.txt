@@ -1,0 +1,1 @@
+W tym folderze należy umieszczać wszystkie utworzone pliki .py 
