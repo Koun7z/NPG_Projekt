@@ -1,0 +1,13 @@
+[project]
+name = "Mistrz_Klawiatury"
+version = "0.1"
+dependencies = [
+  "pygame==2.5.2",
+  "pygame-gui==0.6.10",
+]
+requires-python = ">=3.11"
+
+readme = "README.md"
+
+[project.optional-dependencies]
+test = ["pytest>=8.2"]
