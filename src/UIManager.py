@@ -8,11 +8,12 @@ import Layout
 class UIManager:
     _instance = None
     _layouts: map[str, Layout]
-    _window: pygame.display
+    _window: pygame.Surface
     _current_layout: str
     _width_window: int
     _height_window: int
     _font: map[str, pygame.font.Font]
+    _running: bool
 
     def __new__(cls, *args, **kwargs):
         raise NotImplementedError
@@ -24,7 +25,15 @@ class UIManager:
         raise NotImplementedError
 
     def change_layout(self, layout_name: str) -> bool:
-        raise NotImplementedError
+        """
+        Changes active layout
+        \n Returns true if successful
+        """
+        if layout_name in self._layouts:
+            self._current_layout = layout_name
+            return True
+
+        return False
 
     def get_current_layout_name(self) -> str:
         raise NotImplementedError
@@ -48,4 +57,4 @@ class UIManager:
         raise NotImplementedError
 
     def close(self):
-        raise NotImplementedError
+        self._running = False
