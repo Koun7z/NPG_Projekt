@@ -2,7 +2,7 @@ from typing import Type
 
 import pygame
 
-from Layout import Layout
+from src.Layout import Layout
 
 
 class UIManager:
