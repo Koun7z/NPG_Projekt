@@ -2,24 +2,37 @@ from typing import Type
 
 import pygame
 
-import Layout
+from Layout import Layout
 
 
 class UIManager:
     _instance = None
-    _layouts: map[str, Layout]
+    _layouts: dict[str, Layout]
     _window: pygame.Surface
+    _clock: pygame.time.Clock
     _current_layout: str
     _width_window: int
     _height_window: int
-    _font: map[str, pygame.font.Font]
+    _font: dict[str, pygame.font.Font]
     _running: bool
 
     def __new__(cls, *args, **kwargs):
-        raise NotImplementedError
+        if cls._instance is None:
+            cls._instance = super().__new__(cls, *args, **kwargs)
+            cls._instance._init()
+        return cls._instance
 
     def _init(self):
-        raise NotImplementedError
+        self._width_window = 1600
+        self._height_window = 900
+
+        pygame.init()
+        self._window = pygame.display.set_mode((self._width_window, self._height_window))
+        self._clock = pygame.time.Clock()
+        self._running = True
+
+        self._font = {}
+        self._layouts = {}
 
     def render(self):
         raise NotImplementedError
