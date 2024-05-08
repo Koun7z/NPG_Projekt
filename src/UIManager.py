@@ -35,7 +35,15 @@ class UIManager:
         self._layouts = {}
 
     def render(self):
-        raise NotImplementedError
+        """
+        Run main loop of game
+        """
+        while self._running:
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    self.close()
+            self.get_current_layout().render(self._window, events)
 
     def change_layout(self, layout_name: str) -> bool:
         """
