@@ -49,10 +49,10 @@ class UIManager:
         return False
 
     def get_current_layout_name(self) -> str:
-        raise NotImplementedError
+        return  self._current_layout
 
     def get_current_layout(self) -> Layout:
-        raise NotImplementedError
+        return self._layouts.get(self._current_layout)
 
     def get_width_window(self) -> int:
         return self._width_window
@@ -61,7 +61,7 @@ class UIManager:
         return self._height_window
 
     def get_window(self) -> pygame.display:
-        raise NotImplementedError
+        return self._window
 
     def get_font(self) -> pygame.font.Font:
         raise NotImplementedError
