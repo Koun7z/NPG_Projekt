@@ -49,7 +49,7 @@ class UIManager:
         """
         Changes active layout
         :param layout_name: layout name
-        :returns True if successful
+        :return: True if successful
         """
         if layout_name in self._layouts:
             self._current_layout = layout_name
