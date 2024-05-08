@@ -60,7 +60,7 @@ class UIManager:
     def get_height_window(self) -> int:
         return self._height_window
 
-    def get_window(self) -> pygame.display:
+    def get_window(self) -> pygame.Surface:
         return self._window
 
     def get_font(self) -> pygame.font.Font:
