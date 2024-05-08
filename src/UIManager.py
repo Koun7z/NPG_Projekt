@@ -71,8 +71,15 @@ class UIManager:
     def get_window(self) -> pygame.display:
         raise NotImplementedError
 
-    def get_font(self) -> pygame.font.Font:
-        raise NotImplementedError
+    def get_font(self, font_name: str) -> pygame.font.Font:
+        """
+        Returns font for given name
+        :param font_name: str - name of font
+        :return: font
+        """
+        if font_name in self._font:
+            return self._font[font_name]
+        raise KeyError
 
     def add_font(self, font_name: str, font: pygame.font.Font) -> bool:
         raise NotImplementedError
