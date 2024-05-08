@@ -55,10 +55,10 @@ class UIManager:
         raise NotImplementedError
 
     def get_width_window(self) -> int:
-        raise NotImplementedError
+        return self._width_window
 
     def get_height_window(self) -> int:
-        raise NotImplementedError
+        return self._height_window
 
     def get_window(self) -> pygame.display:
         raise NotImplementedError
