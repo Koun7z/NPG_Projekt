@@ -82,7 +82,16 @@ class UIManager:
         raise KeyError
 
     def add_font(self, font_name: str, font: pygame.font.Font) -> bool:
-        raise NotImplementedError
+        """
+        Adds font to font database
+        :param font_name: Name of adding font
+        :param font: Object of adding font
+        :return: True if successful
+        """
+        if font_name in self._font:
+            return False
+        self._font[font_name] = font
+        return True
 
     def close(self):
         self._running = False
