@@ -48,7 +48,8 @@ class UIManager:
     def change_layout(self, layout_name: str) -> bool:
         """
         Changes active layout
-        \n Returns true if successful
+        :param layout_name: layout name
+        :returns True if successful
         """
         if layout_name in self._layouts:
             self._current_layout = layout_name
