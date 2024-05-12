@@ -19,4 +19,4 @@ Enumerator będący listą dostępnych trybów trudności
 # Score
 TODO:
 - [ ] Score - Obiekt przechowujący pojedyczy wynik zdobyty przez gracza
-      Sposób zapisu wyników do ewentualnej edycji.
+      (Proponowany sposób zapisu wyniku).
