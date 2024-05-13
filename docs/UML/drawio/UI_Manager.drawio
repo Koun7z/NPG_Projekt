@@ -1,0 +1,36 @@
+<mxfile host="app.diagrams.net" modified="2024-05-13T20:01:28.584Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="mqkYScaoY-QKPSxQIRWC" version="24.4.0" type="device">
+  <diagram name="Strona-1" id="lW90C72kBJjDuBChe3ZZ">
+    <mxGraphModel dx="1434" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object label="UIManager" asdf="dasdsasdsadasd" id="08lzE9bTN29DCqEtJFMw-1">
+          <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+            <mxGeometry x="330" y="140" width="310" height="340" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="08lzE9bTN29DCqEtJFMw-2" value="&lt;div&gt;- _instance: UIManager&lt;/div&gt;- _layouts: Map&amp;lt;String,Layout&amp;gt;&lt;div&gt;- _window: PygameWindow&amp;nbsp;&lt;/div&gt;&lt;div&gt;- _current_layout: String&lt;/div&gt;&lt;div&gt;- _width_window: int&lt;/div&gt;&lt;div&gt;- _height_window: int&lt;/div&gt;&lt;div&gt;- _font: Map&amp;lt;String,Pygame.font&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="08lzE9bTN29DCqEtJFMw-1" vertex="1">
+          <mxGeometry y="26" width="310" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="08lzE9bTN29DCqEtJFMw-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="08lzE9bTN29DCqEtJFMw-1" vertex="1">
+          <mxGeometry y="140" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="08lzE9bTN29DCqEtJFMw-4" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ render(): void&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ change_layout(String layout_name): bool&lt;/div&gt;&lt;div&gt;+ get_current_layout_name(): String&lt;/div&gt;&lt;div&gt;+ get_current_layout():Layout&lt;/div&gt;&lt;div&gt;+ get_width_window(): int&lt;/div&gt;&lt;div&gt;+ get_height_window(): int&lt;/div&gt;&lt;div&gt;+ get_window():PygameWindow&lt;/div&gt;&lt;div&gt;+ get_font(String fontName):Font&lt;/div&gt;&lt;div&gt;+ add_font(String fontName, Pygame.Font font): bool&lt;/div&gt;&lt;div&gt;+get_delta_time(): float&lt;/div&gt;&lt;div&gt;+ close():void&lt;/div&gt;&lt;div&gt;- __new__(): void&lt;/div&gt;&lt;div&gt;- _init(): void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="08lzE9bTN29DCqEtJFMw-1" vertex="1">
+          <mxGeometry y="148" width="310" height="192" as="geometry" />
+        </mxCell>
+        <mxCell id="08lzE9bTN29DCqEtJFMw-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="08lzE9bTN29DCqEtJFMw-9" target="08lzE9bTN29DCqEtJFMw-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08lzE9bTN29DCqEtJFMw-9" value="Layout" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="300" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="08lzE9bTN29DCqEtJFMw-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="08lzE9bTN29DCqEtJFMw-9" vertex="1">
+          <mxGeometry y="26" width="210" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="08lzE9bTN29DCqEtJFMw-12" value="+ render(window, events): void&lt;div&gt;+ close(): void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="08lzE9bTN29DCqEtJFMw-9" vertex="1">
+          <mxGeometry y="34" width="210" height="46" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
