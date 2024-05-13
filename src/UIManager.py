@@ -16,7 +16,6 @@ class UIManager:
     _height_window: int
     _font: dict[str, pygame.font.Font]
     _running: bool
-    _clock: pygame.time.Clock
     _delta_time: float
 
     def __new__(cls, *args, **kwargs):
@@ -33,7 +32,6 @@ class UIManager:
         self._window = pygame.display.set_mode((self._width_window, self._height_window))
         self._clock = pygame.time.Clock()
         self._running = True
-        self._clock = pygame.time.Clock()
         self._font = {}
         self._layouts = {
             "Classic_Game_Layout": ClassicGameLayout(),
