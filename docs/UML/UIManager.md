@@ -19,6 +19,8 @@ get_font() - Zwraca szukany font, w przypadku nie znalezienia zwraca błąd
 
 add_font - dodaje Font do bazy fontów, jeżeli taki font istnieje zwraca false
 
+get_delta_time() - Zwraca czas pomiędzy klatkami
+
 close() - zamyka aplikacje,wywołuje close na aktualnym Layoucie, ustawia flagę isRunning na false. 
 
 __new__() - funkcja która sprawdza czy nie istnieje już obiekt tej klasy, jeżeli nie to tworzy obiekt.
