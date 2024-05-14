@@ -2,6 +2,7 @@ from typing import Type
 
 import pygame
 
+from src.ClassicGameLayout import ClassicGameLayout
 from src.Layout import Layout
 
 
@@ -15,6 +16,7 @@ class UIManager:
     _height_window: int
     _font: dict[str, pygame.font.Font]
     _running: bool
+    _delta_time: float
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -30,15 +32,18 @@ class UIManager:
         self._window = pygame.display.set_mode((self._width_window, self._height_window))
         self._clock = pygame.time.Clock()
         self._running = True
-
         self._font = {}
-        self._layouts = {}
+        self._layouts = {
+            "Classic_Game_Layout": ClassicGameLayout(),
+        }
+        self.change_layout("Classic_Game_Layout")
 
     def render(self):
         """
         Run main loop of game
         """
         while self._running:
+            self._delta_time = self._clock.tick(60) / 1000.0
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
@@ -58,7 +63,7 @@ class UIManager:
         return False
 
     def get_current_layout_name(self) -> str:
-        return  self._current_layout
+        return self._current_layout
 
     def get_current_layout(self) -> Layout:
         return self._layouts.get(self._current_layout)
@@ -81,6 +86,9 @@ class UIManager:
         if font_name in self._font:
             return self._font[font_name]
         raise KeyError
+
+    def get_delta_time(self):
+        return self._delta_time
 
     def add_font(self, font_name: str, font: pygame.font.Font) -> bool:
         """
