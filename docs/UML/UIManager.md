@@ -30,4 +30,9 @@ _init() - Tworzy obiekt UIManager, tworzy listę layoutów, generuje okno aplika
 
 ## Layout
 render(window, event) - główna funkcja programu wykonująca całe działanie layoutu, reaguje na eventy
+
 close() - funkcja zamykająca wszystkie otwarte elementy
+
+get_font_of() - zwraca czcionkę odpowiadającą danej nazwie elemenu UI
+
+get_color_of() - zwraca kolor odpowiadający danej nazwie elementu UI 

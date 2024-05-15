@@ -35,7 +35,12 @@ class UIManager:
         self._window = pygame.display.set_mode((self._width_window, self._height_window))
         self._clock = pygame.time.Clock()
         self._running = True
+
         self._font = {}
+        # TODO: Określić wszystkie wykorzystywane czcionki
+        self.add_font("Consolas", pygame.font.SysFont("Consolas", 30))
+        self.add_font("Lucida Sans", pygame.font.SysFont("Lucida Sans", 15))
+
         self._layouts = {
             "Classic_Game_Layout": ClassicGameLayout(),
         }
