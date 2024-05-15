@@ -4,6 +4,7 @@ import pygame
 
 from src.ClassicGameLayout import ClassicGameLayout
 from src.Layout import Layout
+from src.GameManager import GameManager
 
 
 class UIManager:
@@ -17,6 +18,8 @@ class UIManager:
     _font: dict[str, pygame.font.Font]
     _running: bool
     _delta_time: float
+
+    _gameManager: GameManager
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -38,6 +41,8 @@ class UIManager:
         }
         self.change_layout("Classic_Game_Layout")
 
+        self._gameManager = GameManager()
+
     def render(self):
         """
         Run main loop of game
@@ -48,6 +53,9 @@ class UIManager:
             for event in events:
                 if event.type == pygame.QUIT:
                     self.close()
+
+                self._gameManager.handle_input(event)
+
             self.get_current_layout().render(self._window, events)
 
     def change_layout(self, layout_name: str) -> bool:

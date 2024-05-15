@@ -2,7 +2,7 @@
 name = "Mistrz_Klawiatury"
 version = "0.1"
 dependencies = [
-  "pygame==2.5.2",
+  "pygame-ce>=2.4.1",
   "pygame-gui==0.6.10",
 ]
 requires-python = ">=3.11"
