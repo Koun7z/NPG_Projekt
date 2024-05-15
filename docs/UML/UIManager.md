@@ -1,5 +1,5 @@
 ## UI Manager
-![UML](img/UI_Manager.jpg)
+![UML](img/UI_Manager.png)
 
 render() - Ta funkcja będzie posiadała główną pętlę programu, pobiera listę eventów i odpala render z aktulanego layoutu, zakańcza pętlę w momencie kiedy isRunning jest false. Na początku ustawia flagę isRunnning na true
 
@@ -27,6 +27,8 @@ __new__() - funkcja która sprawdza czy nie istnieje już obiekt tej klasy, jeż
 Zwraca obiekt klasy UIManager
 
 _init() - Tworzy obiekt UIManager, tworzy listę layoutów, generuje okno aplikacji
+
+render_input_text_surface() - tworzy powierzchnie (pygame.Surface) bazując na danych player_input i target_text z gameManager'a, na palecie kolorów i fontów z layoutu oraz na wymiarach okna z UImanagera. Zwróconą powierzchnie trzeba następnie nałożyć na główną powierzchnie (_window.blit()) 
 
 ## Layout
 render(window, event) - główna funkcja programu wykonująca całe działanie layoutu, reaguje na eventy
