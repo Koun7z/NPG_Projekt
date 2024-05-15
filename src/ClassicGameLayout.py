@@ -17,7 +17,7 @@ class ClassicGameLayout(Layout):
             "ui_text": (69, 70, 76),         # primary text dolor
             "ui_text_2": (230, 181, 37),     # secondary text color
             "background": (89, 96, 128),     # primary background color
-            "background_2": (69, 98, 230),   # primary background color
+            "background_2": (69, 98, 230),   # secondary background color
             "target_text": (69, 70, 76),     # color of text to be typed
             "correct_text": (230, 181, 37),  # color of correctly typed text
             "wrong_text": (205, 115, 85)     # color of incorrectly typed text
