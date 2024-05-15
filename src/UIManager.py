@@ -6,6 +6,7 @@ from src.ClassicGameLayout import ClassicGameLayout
 from src.Layout import Layout
 from src.GameManager import GameManager
 
+
 class UIManager:
     _instance = None
     _layouts: dict[str, Layout]
@@ -108,8 +109,6 @@ class UIManager:
             return False
         self._font[font_name] = font
         return True
-
-
 
     def close(self):
         self._running = False
