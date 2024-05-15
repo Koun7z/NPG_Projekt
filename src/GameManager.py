@@ -28,7 +28,8 @@ class GameManager:
             return
 
         if event.key == pygame.K_BACKSPACE:
-            self._player_input.pop()
+            if len(self._player_input) > 0:
+                self._player_input.pop()
             return
 
         if event.key == pygame.K_ESCAPE:
