@@ -1,11 +1,13 @@
 import pygame
 import pygame_gui
 
+from src.Counter import Counter
 from src.Layout import Layout
 from typing import List
 
 
 class ClassicGameLayout(Layout):
+
     def __init__(self):
         from src.UIManager import UIManager
         self._manager = pygame_gui.UIManager((UIManager().get_width_window(),
@@ -28,7 +30,12 @@ class ClassicGameLayout(Layout):
             "target_font": UIManager().get_font("Consolas")  # must be monospace
         }
 
-    def render(self, window: pygame.display, events: List[pygame.event.Event]):
+        layout_rect = pygame.Rect(0, 0, 100, 100)
+        layout_rect.topright = (-30, -20)
+        self._counter = Counter(relative_rect=layout_rect, text="Hello World", manager=self._manager,
+                                anchors={"right": "right"})
+
+    def render(self, window: pygame.Surface, events: List[pygame.event.Event]):
         from src.UIManager import UIManager
 
         for event in events:
@@ -37,7 +44,7 @@ class ClassicGameLayout(Layout):
         self._manager.update(UIManager().get_delta_time())
 
         window.fill((255, 255, 255))  # TODO: Change to window.fill(self.get_color_of("background"))
-                                      # after implementing function
+        # after implementing function
 
         # Tutaj możesz dodać renderowanie innych elementów układu gry
         # Na przykład przyciski, obiekty gry, itp.
