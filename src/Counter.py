@@ -39,4 +39,8 @@ class Counter:
         return int(self._stop_time - self._start_time)
 
     def update(self):
-        raise NotImplementedError
+        t = self.get_time()
+        minutes = t // 60
+        seconds = t % 60
+        self._ui_label.set_text(f"{minutes:02}:{seconds:02}")
+        print(t)
