@@ -34,7 +34,9 @@ class Counter:
         self._is_active = False
 
     def get_time(self) -> int:
-        raise NotImplementedError
+        if self._is_active:
+            return int(time.time() - self._start_time)
+        return int(self._stop_time - self._start_time)
 
     def update(self):
         raise NotImplementedError
