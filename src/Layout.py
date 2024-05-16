@@ -9,7 +9,7 @@ class Layout:
     _colorPalette: dict[str, tuple[int, int, int]]
     _fontPalette: dict[str, pygame.font.Font]
 
-    def render(self, window: pygame.display, events: List[pygame.event.Event]):
+    def render(self, window: pygame.Surface, events: List[pygame.event.Event]):
         raise NotImplementedError
 
     def close(self):
