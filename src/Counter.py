@@ -29,7 +29,9 @@ class Counter:
         return True
 
     def reset(self):
-        raise NotImplementedError
+        self._start_time = time.time()
+        self._stop_time = time.time()
+        self._is_active = False
 
     def get_time(self) -> int:
         raise NotImplementedError
