@@ -1,13 +1,21 @@
 from typing import List
-
+from src.Enumerators import Mode, Difficulty
 import pygame
 
 
 class GameManager:
     _instance = None
+    _storageManager: StorageManager
+
     CHAR_LIST: List[str]
 
     _player_input: List[str]
+    _target_text: List[str]
+    _target_list: List[str]
+
+    _current_mode: Mode
+
+
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -49,3 +57,28 @@ class GameManager:
 
     def clear_input(self):
         self._player_input.clear()
+
+    def check_target_completed(self):
+        raise NotImplementedError
+
+    def load_target_list(self, diff: Difficulty):
+        raise NotImplementedError
+
+    def next_target_sentence(self, random: bool) -> bool:
+        raise NotImplementedError
+
+    def next_target_word(self, random: bool) -> bool:
+        raise NotImplementedError
+
+    def get_target_text(self) -> str:
+        raise NotImplementedError
+
+    def get_random_sentence(self) -> str:
+        raise NotImplementedError
+
+    def get_random_word(self) -> str:
+        raise NotImplementedError
+
+    def set_mode(self, mode: Mode):
+        raise NotImplementedError
+
