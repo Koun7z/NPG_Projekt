@@ -2,8 +2,8 @@
 
 ## GameManager
 
-[!TIP]
-target = zdanie/słowo do wpisania
+>[!TIP]
+>target = zdanie/słowo do wpisania
 
 \_\_new__() - tworzy singleton i wywołuje konstruktor
 
@@ -13,9 +13,11 @@ handle_inptut() - odczytuje wpisany teks z otrzymanego eventu i dodaje go do zmi
 
 get_input() - zwraca zawartość zmiennej _player_input
 
+get_input_text() - zwraca wpisany tekst jako pojedynczy string
+
 clear_input() - usuwa dane przechowywane w zmiennej _player_input
 
-check_target_completed() - sprawdza czy wpisane przez gracza słowo zgadza się z ze słowem target, jeżeli tak to czyści input i wczytuje nowy target (dodaje punkty ?)
+check_target_completed() - sprawdza czy wpisane przez gracza słowo zgadza się z ze słowem target, jeżeli tak to czyści input i wczytuje nowy target (dodaje punkty ?), zwraca liczbę poprawnie wpisanych znaków
 
 load_target_list() - wczytuje listę słów do wpisywania
 
@@ -27,8 +29,8 @@ get_random_sentence() - zwraca losowe zdanie z _target_list
 
 get_random_word() - zwraca losowe słowo z _target_list
 
-[!IMPORTANT]
-Metody get_random_... nie usuwają zdania/słowa z puli targetów
+>[!IMPORTANT]
+>Metody get_random_... nie usuwają zdania/słowa z puli targetów
 
 set_mode() - ustawia aktualny tryb gry od którego zależeć będzie funkcjonalność większości metod 
 
