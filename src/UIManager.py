@@ -115,7 +115,7 @@ class UIManager:
 
     def render_input_text_surface(self) -> pygame.Surface:
         """
-        Renders target and inputed text
+        Renders target and inputted text
         :return: pygame.Surface with rendered text
         """
         layout = self.get_current_layout()

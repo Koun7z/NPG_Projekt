@@ -2,11 +2,10 @@ from typing import List
 from src.Enumerators import Mode, Difficulty
 import pygame
 
-
 class GameManager:
     _instance = None
-    _storageManager: StorageManager
-
+    _storage_manager: StorageManager
+    _score_manager: ScoreManager
     CHAR_LIST: List[str]
 
     _player_input: List[str]
@@ -24,11 +23,11 @@ class GameManager:
     def _init(self):
         self._player_input = []
         self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-                          't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ó', 'ź', 'ż', ',', '.', '?', ':', ';', '1', '2',
-                          '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-',
-                          '_', '+', '=', '`', '~']
+                          't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ź', 'ż', ',', '.', '?', ':', ';', '1',
+                          '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
+                          '-', '_', '+', '=', '`', '~']  # Could be in a file actually
 
-    def handle_input(self, event: pygame.event.Event):
+    def handle_input(self, event: pygame.event.Event) -> None:
 
         if event.type != pygame.KEYDOWN:
             return
@@ -50,19 +49,51 @@ class GameManager:
             if char.lower() in self.CHAR_LIST:
                 self._player_input.append(char)
 
-    def get_input(self):
+    def get_input(self) -> List[str]:
         return self._player_input
 
-    def get_input_text(self):
+    def get_input_text(self) -> str:
         return "".join(self._player_input)
 
-    def clear_input(self):
+    def clear_input(self) -> None:
         self._player_input.clear()
 
     def check_target_completed(self) -> int:
-        raise NotImplementedError
+        """
+        Checks if the target text is typed correctly, and provides another target word if it is.
+        :return: Number of correctly typed characters.
+        """
+        match self._current_mode:
+            case Mode.Classic:
 
-    def load_target_list(self, diff: Difficulty):
+                input_text = self.get_input_text()
+                target_text = self.get_target_text()
+
+                ctr = 0
+                for char in input_text:
+                    if char != target_text[ctr]:
+                        break
+                    ctr += 1
+
+                if ctr == len(target_text):
+                    self.next_target_sentence(True)
+                    self._player_input.clear()
+                    # self._score_manager.add_score(len(target_text)) ?
+                return ctr
+
+            case Mode.Menu:
+                raise NotImplementedError
+
+            case Mode.Training:
+                raise NotImplementedError
+
+            case Mode.FallingLetters:
+                raise NotImplementedError
+
+            case _:
+                raise KeyError
+
+    def load_target_list(self, diff: Difficulty) -> None:
         raise NotImplementedError
 
     def next_target_sentence(self, random: bool) -> bool:
@@ -72,7 +103,14 @@ class GameManager:
         raise NotImplementedError
 
     def get_target_text(self) -> str:
-        raise NotImplementedError
+        """
+        :return: Current target text
+        """
+        match self._current_mode:
+            case Mode.Classic:
+                return self._target_text[0]
+            case _:
+                raise NotImplementedError
 
     def get_random_sentence(self) -> str:
         raise NotImplementedError
@@ -80,6 +118,6 @@ class GameManager:
     def get_random_word(self) -> str:
         raise NotImplementedError
 
-    def set_mode(self, mode: Mode):
+    def set_mode(self, mode: Mode) -> None:
         raise NotImplementedError
 
