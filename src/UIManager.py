@@ -38,7 +38,7 @@ class UIManager:
 
         self._font = {}
         self.add_font("text", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.tff", 30))
-        self.add_font("ui", pygame.font.SysFont("./resources/fonts/text/UbuntuMono-Regular.tff", 20))
+        self.add_font("ui", pygame.font.Font("./resources/fonts/text/UbuntuMono-Regular.tff", 20))
 
         self._layouts = {
             "Classic_Game_Layout": ClassicGameLayout(),
