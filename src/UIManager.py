@@ -38,8 +38,8 @@ class UIManager:
 
         self._font = {}
         # TODO: Określić wszystkie wykorzystywane czcionki
-        self.add_font("Consolas", pygame.font.SysFont("Consolas", 30))
-        self.add_font("Lucida Sans", pygame.font.SysFont("Lucida Sans", 15))
+        self.add_font("text", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.tff", 30))
+        self.add_font("ui", pygame.font.SysFont("./resources/fonts/text/UbuntuMono-Regular.tff", 20))
 
         self._layouts = {
             "Classic_Game_Layout": ClassicGameLayout(),
