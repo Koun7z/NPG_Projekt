@@ -37,7 +37,6 @@ class UIManager:
         self._running = True
 
         self._font = {}
-        # TODO: Określić wszystkie wykorzystywane czcionki
         self.add_font("text", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.tff", 30))
         self.add_font("ui", pygame.font.SysFont("./resources/fonts/text/UbuntuMono-Regular.tff", 20))
 
