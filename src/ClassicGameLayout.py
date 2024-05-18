@@ -26,8 +26,8 @@ class ClassicGameLayout(Layout):
         }
 
         self._fontPalette = {
-            "ui_font": UIManager().get_font("Lucida Sans"),
-            "target_font": UIManager().get_font("Consolas")  # must be monospace
+            "ui_font": UIManager().get_font("ui"),
+            "target_font": UIManager().get_font("text")  # must be monospace
         }
 
     def render(self, window: pygame.Surface, events: List[pygame.event.Event]):
