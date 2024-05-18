@@ -15,8 +15,6 @@ class GameManager:
 
     _current_mode: Mode
 
-
-
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super().__new__(cls, *args, **kwargs)
@@ -55,10 +53,13 @@ class GameManager:
     def get_input(self):
         return self._player_input
 
+    def get_input_text(self):
+        return "".join(self._player_input)
+
     def clear_input(self):
         self._player_input.clear()
 
-    def check_target_completed(self):
+    def check_target_completed(self) -> int:
         raise NotImplementedError
 
     def load_target_list(self, diff: Difficulty):

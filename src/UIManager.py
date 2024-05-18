@@ -19,7 +19,7 @@ class UIManager:
     _running: bool
     _delta_time: float
 
-    _gameManager: GameManager
+    _game_manager: GameManager
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -46,7 +46,7 @@ class UIManager:
         }
         self.change_layout("Classic_Game_Layout")
 
-        self._gameManager = GameManager()
+        self._game_manager = GameManager()
 
     def render(self):
         """
@@ -58,8 +58,6 @@ class UIManager:
             for event in events:
                 if event.type == pygame.QUIT:
                     self.close()
-
-                self._gameManager.handle_input(event)
 
             self.get_current_layout().render(self._window, events)
 
@@ -114,6 +112,47 @@ class UIManager:
             return False
         self._font[font_name] = font
         return True
+
+    def render_input_text_surface(self) -> pygame.Surface:
+        """
+        Renders target and inputed text
+        :return: pygame.Surface with rendered text
+        """
+        layout = self.get_current_layout()
+
+        font = layout.get_font_of("target_font")
+        text = self._game_manager.get_input_text()
+        target = self._game_manager.get_target_text()
+
+        background_color = layout.get_color_of("background")
+        target_text_color = layout.get_color_of("target_text")
+        correct_text_color = layout.get_color_of("correct_text")
+        wrong_text_color = layout.get_color_of("wrong_text")
+
+        good_chars = self._game_manager.check_target_completed()
+
+        good_text = text[0:good_chars]
+        bad_text = text[good_chars:]
+
+        good_size = font.size(good_text)
+        bad_size = font.size(bad_text)
+
+        target_render = font.render(target, True, target_text_color)
+        input_render = font.render(good_text, True, correct_text_color)
+
+        font.set_underline(True)
+        line_render = font.render(" ", True, correct_text_color)
+        input_render_err = font.render(bad_text, True, wrong_text_color)
+        font.set_underline(False)
+
+        rect = pygame.Rect(good_size[0], 0, bad_size[0], bad_size[1])
+        pygame.draw.rect(target_render, background_color, rect)
+
+        target_render.blit(input_render, (0, 0))
+        target_render.blit(line_render, (good_size[0], 0))
+        target_render.blit(input_render_err, (good_size[0], 0))
+
+        return target_render
 
     def close(self):
         self._running = False
