@@ -58,40 +58,41 @@ class GameManager:
     def clear_input(self) -> None:
         self._player_input.clear()
 
-    def check_target_completed(self) -> int:
+    def handle_target_completed(self) -> int:
         """
         Checks if the target text is typed correctly, and provides another target word if it is.
         :return: Number of correctly typed characters.
         """
-        match self._current_mode:
-            case Mode.Classic:
 
-                input_text = self.get_input_text()
-                target_text = self.get_target_text()
+        input_text = self.get_input_text()
+        target_text = self.get_target_text()
 
-                ctr = 0
-                for char in input_text:
-                    if char != target_text[ctr]:
-                        break
-                    ctr += 1
+        ctr = 0
+        for char in input_text:
+            if char != target_text[ctr]:
+                break
+            ctr += 1
 
-                if ctr == len(target_text):
+        if ctr == len(target_text):
+            match self._current_mode:
+                case Mode.Classic:
                     self.next_target_sentence(True)
                     self._player_input.clear()
                     # self._score_manager.add_score(len(target_text)) ?
-                return ctr
 
-            case Mode.Menu:
-                raise NotImplementedError
+                case Mode.Menu:
+                    raise NotImplementedError
 
-            case Mode.Training:
-                raise NotImplementedError
+                case Mode.Training:
+                    raise NotImplementedError
 
-            case Mode.FallingLetters:
-                raise NotImplementedError
+                case Mode.FallingLetters:
+                    raise NotImplementedError
 
-            case _:
-                raise KeyError
+                case _:
+                    raise KeyError
+
+        return ctr
 
     def load_target_list(self, diff: Difficulty) -> None:
         raise NotImplementedError
