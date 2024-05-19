@@ -20,7 +20,7 @@ class Layout:
         Returns the color of the given component name,
         if name is not recognized return chartreuse	#7FFF00	(127,255,0) - jest to neonowo żółty
         :param component_name: name of the component
-        :return:  RGB color value
+        :return: RGB color value
         """
         if component_name in self._colorPalette:
             return self._colorPalette[component_name]
@@ -28,13 +28,11 @@ class Layout:
             return (127,255,0)
     def get_font_of(self, component_name: str) -> pygame.font.Font:
         """
-        Returns the of the given component name, if name is not recognized return <wybież se domyślną czcionke>
+        Returns the of the given component name, if name is not recognized returns default font
         :param component_name: name of the component
         :return: Font object
         """
         if component_name in self._fontPalette:
             return self._fontPalette[component_name]
         else:
-            return {
-                    "ui_font": pygame.font.SysFont("Consolas", 30),
-                    "target_font": pygame.font.SysFont("Lucida Sans", 15)}
+            return pygame.font.Sysfont("404", 40)
