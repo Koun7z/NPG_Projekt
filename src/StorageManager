@@ -40,8 +40,9 @@ class StorageManager:
             print(f"Error saving player scores: {e}")
             return False
 
-    def load_player_scores(self, filename: str) -> bool:
+    def load_player_scores(self) -> bool:
         try:
+            filename=self._path_list["player"]
             with open(filename, 'r') as f:
                 self._player_scores = json.load(f)
             return True
@@ -63,6 +64,5 @@ class StorageManager:
     def get_quotes(self) -> List[str]:
         if self._quotes ==None or len(self._quotes)==0:
             print("There are no quotes to load :(")
-            return None
-        else:
-            return self._quotes
+            self.load_quotes()
+        return self._quotes
