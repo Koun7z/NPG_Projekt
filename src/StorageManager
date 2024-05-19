@@ -18,7 +18,7 @@ class StorageManager:
     def _init(self):
         self._player_scores = {}
         self._quotes = []
-        self._path_list={"1":"","2":"","3":"","player":""}
+        self._path_list={"1":"../saved_files/easy_qutes.json","2":"../saved_files/medium_qutes.json","3":"../saved_files/hard_qutes.json","player":"../saved_files/scores.json"}
         self._diff=1
     def change_difficulty(self, diff:int):
         self._diff=diff
