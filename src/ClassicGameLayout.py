@@ -44,12 +44,11 @@ class ClassicGameLayout(Layout):
 
         self._manager.update(UIManager().get_delta_time())
 
-        window.fill((255, 255, 255))  # TODO: Change to window.fill(self.get_color_of("background"))
-        # after implementing function
+        window.fill(self.get_color_of("background"))
 
         text_surface = ui_manager.render_input_text_surface()
         # TODO: Offset calculation should be done somewhere else preferably only once and updated if window size changes
-        left_offset = (ui_manager.get_width_window() - self.get_font_of("target_text").size(game_manager.get_target_text())[0]) / 2
+        left_offset = (ui_manager.get_width_window() - self.get_font_of("target_font").size(game_manager.get_target_text())[0]) / 2
         top_offset = ui_manager.get_height_window() / 2
         window.blit(text_surface, (left_offset, top_offset))
 
