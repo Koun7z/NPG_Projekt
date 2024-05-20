@@ -1,0 +1,47 @@
+{
+  "@top_bar": {
+    "colours": {
+      "dark_bg": "#596AB3"
+    }
+  },
+  "@top_bar_button": {
+    "colours": {
+      "normal_bg": "#596AB3",
+      "hovered_bg": "#D3AB38",
+      "normal_border": "#45464C",
+      "normal_text": "#45464C",
+      "hovered_text": "#45464C"
+    },
+    "misc": {
+      "shape": "rounded_rectangle",
+      "shape_corner_radius": "50"
+    },
+    "font": {
+      "size": "30"
+    }
+  },
+  "#counter": {
+    "colours": {
+      "normal_text": "#D3AB38"
+    },
+    "font": {
+      "size": "40"
+    }
+  },
+  "#progress_test": {
+    "colours": {
+      "normal_text": "#D3AB38"
+    },
+    "font": {
+      "size": "40"
+    }
+  },
+  "#next_line_holder": {
+        "colours": {
+      "normal_text": "#6879C6"
+    },
+    "font": {
+      "size": "20"
+    }
+  }
+}
