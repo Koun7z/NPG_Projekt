@@ -1,6 +1,6 @@
 import json
 from typing import Dict, List
-from Enumerators import Difficulty
+from src.Enumerators import Difficulty
 
 
 class StorageManager:

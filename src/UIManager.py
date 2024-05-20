@@ -37,8 +37,8 @@ class UIManager:
         self._running = True
 
         self._font = {}
-        self.add_font("text", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.tff", 30))
-        self.add_font("ui", pygame.font.Font("./resources/fonts/text/UbuntuMono-Regular.tff", 20))
+        self.add_font("text", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.ttf", 30))
+        self.add_font("ui", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.ttf", 20)) # UbuntuMono-Regular.ttf
 
         self._layouts = {
             "Classic_Game_Layout": ClassicGameLayout(),
@@ -128,7 +128,7 @@ class UIManager:
         correct_text_color = layout.get_color_of("correct_text")
         wrong_text_color = layout.get_color_of("wrong_text")
 
-        good_chars = self._game_manager.check_target_completed()
+        good_chars = self._game_manager.handle_target_completed()
 
         good_text = text[0:good_chars]
         bad_text = text[good_chars:]

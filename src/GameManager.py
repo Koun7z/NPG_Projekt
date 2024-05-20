@@ -2,6 +2,10 @@ from typing import List
 from src.Enumerators import Mode, Difficulty
 import pygame
 
+from src.ScoreManager import ScoreManager
+from src.StorageManager import StorageManager
+
+
 class GameManager:
     _instance = None
     _storage_manager: StorageManager
@@ -22,6 +26,8 @@ class GameManager:
 
     def _init(self):
         self._player_input = []
+        self._current_mode = Mode.Classic
+        self._target_text = ["Ala ma kota", "Lorem ipsum"]
         self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                           't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ź', 'ż', ',', '.', '?', ':', ';', '1',
                           '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
@@ -121,4 +127,3 @@ class GameManager:
 
     def set_mode(self, mode: Mode) -> None:
         raise NotImplementedError
-
