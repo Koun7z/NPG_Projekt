@@ -1,3 +1,4 @@
+import math
 from typing import Type
 
 import pygame
@@ -130,6 +131,12 @@ class UIManager:
 
         good_chars = self._game_manager.handle_target_completed()
 
+        target_size = font.size(target)
+        font_size = font.point_size
+        if target_size[0] > self._width_window:
+            font.set_point_size(math.floor(font_size * (1 - (target_size[0] - self._width_window) / self._width_window)))
+            print(font_size)
+
         good_text = text[0:good_chars]
         bad_text = text[good_chars:]
 
@@ -150,6 +157,8 @@ class UIManager:
         target_render.blit(input_render, (0, 0))
         target_render.blit(line_render, (good_size[0], 0))
         target_render.blit(input_render_err, (good_size[0], 0))
+
+        font.set_point_size(font_size)
 
         return target_render
 
