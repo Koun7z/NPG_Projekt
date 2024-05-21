@@ -1,31 +1,31 @@
-<mxfile host="app.diagrams.net" modified="2024-05-17T19:17:56.316Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0" etag="3voukASTIIQjTNeQJjpn" version="24.4.4" type="device">
+<mxfile host="app.diagrams.net" modified="2024-05-20T18:46:09.505Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0" etag="ZxV96k6UJZExJWtHbavT" version="24.4.4" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="821" dy="429" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="621" dy="324" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-0" value="ScoreManager" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-0" value="ScoreManager" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="160" y="390" width="330" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-1" value="+ _instance: ScoreManager&lt;div&gt;+ _num_of_correct_chars: int&lt;/div&gt;&lt;div&gt;+ _score: Score&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AdARO3M1oDb3i1M6OhWR-0">
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-1" value="+ _instance: ScoreManager&lt;div&gt;+ _current_correct_chars: int&lt;/div&gt;&lt;div&gt;+ _score: Score&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="AdARO3M1oDb3i1M6OhWR-0" vertex="1">
           <mxGeometry y="26" width="330" height="74" as="geometry" />
         </mxCell>
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="AdARO3M1oDb3i1M6OhWR-0">
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="AdARO3M1oDb3i1M6OhWR-0" vertex="1">
           <mxGeometry y="100" width="330" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-3" value="&lt;div&gt;+ __new__(): ScoreManager&lt;/div&gt;&lt;div&gt;+ __del__(): bool&lt;/div&gt;&lt;div&gt;+ _init(): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ calculate_score(mode: Mode, counter: Counter): void&lt;/div&gt;+&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;rank_score(storagemanager: StorageManager): void&lt;/span&gt;&lt;div&gt;+ ask_if_save(storagemanager: StorageManager): void&lt;br&gt;&lt;div&gt;+ update_top_10(storagemanager: StorageManager): void&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AdARO3M1oDb3i1M6OhWR-0">
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-3" value="&lt;div&gt;+ __new__(): ScoreManager&lt;/div&gt;&lt;div&gt;+ __del__(): bool&lt;/div&gt;&lt;div&gt;+ _init(): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ add_score(num_chars: int): void&lt;/div&gt;&lt;div&gt;+ calculate_score(mode: Mode, counter: Counter): void&lt;/div&gt;+&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;rank_score(storagemanager: StorageManager): void&lt;/span&gt;&lt;div&gt;&lt;div&gt;+ update_top_10(storagemanager: StorageManager): void&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="AdARO3M1oDb3i1M6OhWR-0" vertex="1">
           <mxGeometry y="108" width="330" height="132" as="geometry" />
         </mxCell>
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-6" value="Score" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-6" value="Score" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="620" y="480" width="150" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-9" value="+ _id: int&lt;div&gt;+ _value: int&lt;/div&gt;&lt;div&gt;+ _player_name: str&lt;/div&gt;&lt;div&gt;+ _ranking: int&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="620" y="504" width="150" height="60" as="geometry" />
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-9" value="&lt;div&gt;+ value: int&lt;/div&gt;&lt;div&gt;+ player_name: str&lt;/div&gt;&lt;div&gt;+ ranking: int&lt;/div&gt;&lt;div&gt;+ time: float&lt;/div&gt;&lt;div&gt;+ mode: Mode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="620" y="504" width="150" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-11" value="+_init():void&lt;div&gt;+ input_player_name&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="620" y="564" width="150" height="36" as="geometry" />
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-11" value="+_init():void" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="620" y="580" width="150" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="AdARO3M1oDb3i1M6OhWR-13" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="AdARO3M1oDb3i1M6OhWR-1">
+        <mxCell id="AdARO3M1oDb3i1M6OhWR-13" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="AdARO3M1oDb3i1M6OhWR-1" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="675" y="480" as="sourcePoint" />
             <mxPoint x="520" y="450" as="targetPoint" />
