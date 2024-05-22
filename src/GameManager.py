@@ -14,9 +14,9 @@ class GameManager:
 
     _player_input: List[str]
     _target_text: List[str]
-    _target_list: List[str]
 
     _current_mode: Mode
+    _current_difficulty: Difficulty
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -27,7 +27,8 @@ class GameManager:
     def _init(self):
         self._player_input = []
         self._current_mode = Mode.Classic
-        self._target_text = ["Ala ma kota", "Lorem ipsum"]
+        self._target_text = ["Ala ma kota"]
+
         self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                           't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ź', 'ż', ',', '.', '?', ':', ';', '1',
                           '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
@@ -100,10 +101,11 @@ class GameManager:
 
         return ctr
 
-    def load_target_list(self, diff: Difficulty) -> None:
-        raise NotImplementedError
-
-    def next_target_sentence(self, random: bool) -> bool:
+    def next_target_sentence(self, random: bool) -> None:
+        """
+        Sets target to a new sentenced
+        :param random: Should the sentence be randomly chosen
+        """
         raise NotImplementedError
 
     def next_target_word(self, random: bool) -> bool:
@@ -119,11 +121,27 @@ class GameManager:
             case _:
                 raise NotImplementedError
 
-    def get_random_sentence(self) -> str:
+    def get_random_sentence(self, rm: bool) -> str:
+        """
+        Returns a random sentence from loaded file.
+        :param rm: Whether to remove the sentence from the pool.
+        :return: A random sentence.
+        """
         raise NotImplementedError
 
     def get_random_word(self) -> str:
         raise NotImplementedError
 
     def set_mode(self, mode: Mode) -> None:
+        """
+        Sets the mode of the game
+        :param mode: Game Mode
+        """
+        raise NotImplementedError
+
+    def set_difficulty(self, diff: Difficulty) -> None:
+        """
+        Sets current difficulty.
+        :param diff: Difficulty
+        """
         raise NotImplementedError

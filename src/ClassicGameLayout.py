@@ -37,6 +37,7 @@ class ClassicGameLayout(Layout):
                                                    object_id='#top_bar'),
                                 margins={"left": 0, "top": 0, "right": 0, "bottom": 0},
                                 manager=self._manager)
+
         self._prev_button = UIButton(relative_rect=pygame.Rect((50, 50), (200, 100)),
                                      object_id=ObjectID(class_id='@top_bar_button', object_id='#prev_button'),
                                      manager=self._manager,
@@ -56,15 +57,17 @@ class ClassicGameLayout(Layout):
                               object_id=ObjectID(class_id='@counter', object_id='#counter'),
                               manager=self._manager
                               )
+
         self._progress_test = UILabel(relative_rect=pygame.Rect((-150, 60), (100, 100)),
                                       anchors={'top': 'top',
                                                'right': 'right'},
                                       text="30%",
                                       object_id=ObjectID(class_id='@progress_test', object_id='#progress_test'),
                                       manager=self._manager)
+
         self.next_line_holder = UILabel(relative_rect=pygame.Rect((0, UIManager().get_height_window() / 2 + 20),
                                                                   (UIManager().get_width_window(), 100)),
-                                        text="Lorem ipsum Twoja stara kopara tutu turu",
+                                        text="Lorem ipsum ...",
                                         object_id=ObjectID(class_id='@next_line_holder', object_id='#next_line_holder'),
                                         manager=self._manager)
         self._timer.start()
@@ -84,6 +87,7 @@ class ClassicGameLayout(Layout):
         self._manager.update(UIManager().get_delta_time())
         self._timer.update()
         window.fill(self.get_color_of("background"))
+
         text_surface = ui_manager.render_input_text_surface()
         # TODO: Offset calculation should be done somewhere else preferably only once and updated if window size changes
         left_offset = (ui_manager.get_width_window() -
