@@ -83,7 +83,7 @@ class GameManager:
         if ctr == len(target_text):
             match self._current_mode:
                 case Mode.Classic:
-                    self.next_target_sentence()  # Jeżeli true to znaczy że koniec gry
+                    self.next_target_sentence()  # TODO: Jeżeli true to znaczy że koniec gry
                     self._player_input.clear()
                     # self._score_manager.add_score(len(target_text)) ?
 
