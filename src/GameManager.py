@@ -83,7 +83,8 @@ class GameManager:
         if ctr == len(target_text):
             match self._current_mode:
                 case Mode.Classic:
-                    self.next_target_sentence()  # TODO: Jeżeli true to znaczy że koniec gry
+                    if self.next_target_sentence():
+                        self.win_classic_mode()
                     self._player_input.clear()
                     # self._score_manager.add_score(len(target_text)) ?
 
@@ -153,4 +154,7 @@ class GameManager:
         Sets current difficulty.
         :param diff: Difficulty
         """
+        raise NotImplementedError
+
+    def win_classic_mode(self) -> None:
         raise NotImplementedError
