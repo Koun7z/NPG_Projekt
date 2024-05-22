@@ -1,4 +1,4 @@
-![UML](img/ScoreManager.jpg)
+![UML](img/ScoreManager.png)
 
 # ScoreManager
 
