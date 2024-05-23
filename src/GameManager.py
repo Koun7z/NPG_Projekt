@@ -102,7 +102,7 @@ class GameManager:
 
         return ctr
 
-    def get_next_target_sentence(self):
+    def get_next_target_sentence(self) -> str:
         if len(self._target_text) > 1:
             return self._target_text[1]
         return ""

@@ -90,12 +90,23 @@ class ClassicGameLayout(Layout):
         
         window.fill(self.get_color_of("background"))
 
-        text_surface = ui_manager.render_input_text_surface()
-        # TODO: Offset calculation should be done somewhere else preferably only once and updated if window size changes
-        left_offset = (ui_manager.get_width_window() -
-                       self.get_font_of("target_font").size(game_manager.get_target_text())[0]) / 2
+        font = self.get_font_of("target_font")
+        target = game_manager.get_target_text()
+
+        target_size = font.size(target)
+        font_size = font.point_size
+        width = ui_manager.get_width_window()
+
+        if target_size[0] > width:
+            font.set_point_size(int(font_size * (1 - (target_size[0] - width) / width)))
+
+        text_surface = ui_manager.render_input_text_surface(font)
+
+        left_offset = (ui_manager.get_width_window() - font.size(target)[0]) / 2
         top_offset = ui_manager.get_height_window() / 2
         window.blit(text_surface, (left_offset, top_offset))
+
+        font.set_point_size(font_size)
 
         # Tutaj możesz dodać renderowanie innych elementów układu gry
         # Na przykład przyciski, obiekty gry, itp.

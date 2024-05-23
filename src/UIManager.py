@@ -113,14 +113,13 @@ class UIManager:
         self._font[font_name] = font
         return True
 
-    def render_input_text_surface(self) -> pygame.Surface:
+    def render_input_text_surface(self, font) -> pygame.Surface:
         """
         Renders target and inputted text
         :return: pygame.Surface with rendered text
         """
         layout = self.get_current_layout()
 
-        font = layout.get_font_of("target_font")
         text = self._game_manager.get_input_text()
         target = self._game_manager.get_target_text()
 
@@ -130,12 +129,6 @@ class UIManager:
         wrong_text_color = layout.get_color_of("wrong_text")
 
         good_chars = self._game_manager.handle_target_completed()
-
-        target_size = font.size(target)
-        font_size = font.point_size
-        if target_size[0] > self._width_window:
-            font.set_point_size(math.floor(font_size * (1 - (target_size[0] - self._width_window) / self._width_window)))
-            print(font_size)
 
         good_text = text[0:good_chars]
         bad_text = text[good_chars:]
@@ -157,8 +150,6 @@ class UIManager:
         target_render.blit(input_render, (0, 0))
         target_render.blit(line_render, (good_size[0], 0))
         target_render.blit(input_render_err, (good_size[0], 0))
-
-        font.set_point_size(font_size)
 
         return target_render
 
