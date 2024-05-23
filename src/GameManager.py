@@ -27,7 +27,7 @@ class GameManager:
     def _init(self):
         self._player_input = []
         self._current_mode = Mode.Classic
-        self._target_text = ["Ala ma kota"]
+        self._target_text = ["Ala ma kota", "Lorem ipsum", "Asdf"]
 
         self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                           't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ź', 'ż', ',', '.', '?', ':', ';', '1',
@@ -83,7 +83,8 @@ class GameManager:
         if ctr == len(target_text):
             match self._current_mode:
                 case Mode.Classic:
-                    self.next_target_sentence(True)
+                    if self.next_target_sentence():
+                        self.win_classic_mode()
                     self._player_input.clear()
                     # self._score_manager.add_score(len(target_text)) ?
 
@@ -101,14 +102,23 @@ class GameManager:
 
         return ctr
 
-    def next_target_sentence(self, random: bool) -> None:
+    def get_next_target_sentence(self):
+        if len(self._target_text) > 1:
+            return self._target_text[1]
+        return ""
+
+    def next_target_sentence(self) -> bool:
         """
         Sets target to a new sentenced
-        :param random: Should the sentence be randomly chosen
+        :return If true that list of sentence is empty and game end
         """
-        raise NotImplementedError
+        if len(self._target_text) <= 1:
+            self._target_text = []
+            return True
+        self._target_text = self._target_text[1:]
+        return False
 
-    def next_target_word(self, random: bool) -> bool:
+    def next_target_word(self) -> bool:
         raise NotImplementedError
 
     def get_target_text(self) -> str:
@@ -144,4 +154,7 @@ class GameManager:
         Sets current difficulty.
         :param diff: Difficulty
         """
+        raise NotImplementedError
+
+    def win_classic_mode(self) -> None:
         raise NotImplementedError

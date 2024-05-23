@@ -86,6 +86,8 @@ class ClassicGameLayout(Layout):
 
         self._manager.update(UIManager().get_delta_time())
         self._timer.update()
+        self.next_line_holder.set_text(GameManager().get_next_target_sentence())
+        
         window.fill(self.get_color_of("background"))
 
         text_surface = ui_manager.render_input_text_surface()
