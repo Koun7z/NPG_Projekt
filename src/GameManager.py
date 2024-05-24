@@ -1,3 +1,4 @@
+import random
 from typing import List
 from src.Enumerators import Mode, Difficulty
 import pygame
@@ -28,11 +29,17 @@ class GameManager:
         self._player_input = []
         self._current_mode = Mode.Classic
         self._target_text = ["Ala ma kota", "Lorem ipsum", "Asdf"]
+        self._current_difficulty = Difficulty.Hard
+        self._current_mode = Mode.Classic
+
+        self._storage_manager = StorageManager()
 
         self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                           't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ź', 'ż', ',', '.', '?', ':', ';', '1',
                           '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
                           '-', '_', '+', '=', '`', '~']  # Could be in a file actually
+
+        self.load_target_list(50, True)
 
     def handle_input(self, event: pygame.event.Event) -> None:
 
@@ -102,7 +109,7 @@ class GameManager:
 
         return ctr
 
-    def get_next_target_sentence(self):
+    def get_next_target_sentence(self) -> str:
         if len(self._target_text) > 1:
             return self._target_text[1]
         return ""
@@ -117,6 +124,14 @@ class GameManager:
             return True
         self._target_text = self._target_text[1:]
         return False
+
+    def load_target_list(self, count: int, shuffle: bool = False) -> None:
+        buff = self._storage_manager.get_quotes(self._current_difficulty, self._current_mode)[:]
+
+        if shuffle:
+            random.shuffle(buff)
+
+        self._target_text = buff[:count]
 
     def next_target_word(self) -> bool:
         raise NotImplementedError

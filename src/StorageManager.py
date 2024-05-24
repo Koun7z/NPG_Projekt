@@ -18,10 +18,10 @@ class StorageManager:
     def _init(self):
         self._player_scores = {}
         self._quotes = []
-        self._path_list = {"Difficulty.Easy": "../resources/texts/easy_quotes.json",
-                           "Difficulty.Medium": "../resources/texts//medium_quotes.json",
-                           "Difficulty.Hard": "../resources/texts//hard_quotes.json",
-                           "player": "../resources/players/scores.json"}
+        self._path_list = {"Difficulty.Easy": "./resources/texts/easy_quotes.txt",
+                           "Difficulty.Medium": "./resources/texts/medium_quotes.txt",
+                           "Difficulty.Hard": "./resources/texts/Lorem.txt",
+                           "player": "./resources/players/scores.json"}
 
     # def add_player_score(self, score: Score) -> None:
     #     self._player_scores.append(score)
