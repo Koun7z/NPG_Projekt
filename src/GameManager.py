@@ -158,18 +158,10 @@ class GameManager:
         raise NotImplementedError
 
     def set_mode(self, mode: Mode) -> None:
-        """
-        Sets the mode of the game
-        :param mode: Game Mode
-        """
-        raise NotImplementedError
+        self._current_mode = mode
 
     def set_difficulty(self, diff: Difficulty) -> None:
-        """
-        Sets current difficulty.
-        :param diff: Difficulty
-        """
-        raise NotImplementedError
+        self._current_difficulty = diff
 
     def win_classic_mode(self) -> None:
         raise NotImplementedError
