@@ -1,7 +1,7 @@
 import json
 from typing import Dict, List
 from src.Enumerators import Difficulty, Mode
-from src.ScoreManager import Score
+from src.Score import Score
 
 
 class StorageManager:

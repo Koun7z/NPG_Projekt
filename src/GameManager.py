@@ -10,7 +10,6 @@ from src.StorageManager import StorageManager
 class GameManager:
     _instance = None
     _storage_manager: StorageManager
-    _score_manager: ScoreManager
     CHAR_LIST: List[str]
 
     _player_input: List[str]
@@ -93,7 +92,8 @@ class GameManager:
                     if self.next_target_sentence():
                         self.win_classic_mode()
                     self._player_input.clear()
-                    # self._score_manager.add_score(len(target_text)) ?
+
+                    ScoreManager().update_score(len(target_text))
 
                 case Mode.Menu:
                     raise NotImplementedError
