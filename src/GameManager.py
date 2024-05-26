@@ -27,7 +27,7 @@ class GameManager:
     def _init(self):
         self._player_input = []
         self._current_mode = Mode.Classic
-        self._target_text = ["Ala ma kota", "Lorem ipsum", "Asdf"]
+        self._target_text = []
         self._current_difficulty = Difficulty.Hard
         self._current_mode = Mode.Classic
 
@@ -38,7 +38,7 @@ class GameManager:
                           '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
                           '-', '_', '+', '=', '`', '~']  # Could be in a file actually
 
-        self.load_target_list(50, True)
+        self.load_target_list_n_chars(200, True)
 
     def handle_input(self, event: pygame.event.Event) -> None:
 
@@ -126,12 +126,44 @@ class GameManager:
         return False
 
     def load_target_list(self, count: int, shuffle: bool = False) -> None:
+        """
+        Loads list of sentence targets
+        :param count: Number of sentences to load
+        :param shuffle: Should the target list be shuffled
+        """
         buff = self._storage_manager.get_quotes(self._current_difficulty, self._current_mode)[:]
 
         if shuffle:
             random.shuffle(buff)
 
         self._target_text = buff[:count]
+
+    def load_target_list_n_chars(self, count: int, shuffle: bool = False) -> None:
+        """
+        Loads list of sentence targets with set number of total characters
+        :param count: Number of total characters
+        :param shuffle: Should the target list be shuffled
+        """
+        self._target_text = []
+        buff = self._storage_manager.get_quotes(self._current_difficulty, self._current_mode)[:]
+
+        if shuffle:
+            random.shuffle(buff)
+
+        total_length = 0
+        for sentence in buff:
+            if total_length + len(sentence) <= count:
+                self._target_text.append(sentence)
+                total_length += len(sentence)
+            else:
+                for i, s in enumerate(self._target_text):
+                    if count - total_length == len(sentence) - len(s):
+                        total_length -= len(s)
+                        total_length += len(sentence)
+                        self._target_text[i] = sentence
+                        break
+            if total_length == count:
+                break
 
     def next_target_word(self) -> bool:
         raise NotImplementedError
