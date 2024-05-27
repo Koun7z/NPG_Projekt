@@ -14,6 +14,8 @@ class GameManager:
 
     _player_input: List[str]
     _target_text: List[str]
+    _count_of_finish_characters: int
+    _progress: int
 
     _current_mode: Mode
     _current_difficulty: Difficulty
@@ -28,9 +30,10 @@ class GameManager:
         self._player_input = []
         self._current_mode = Mode.Classic
         self._target_text = []
+        self._progress = 0
         self._current_difficulty = Difficulty.Hard
         self._current_mode = Mode.Classic
-
+        self._count_of_finish_characters = 0
         self._storage_manager = StorageManager()
 
         self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -71,6 +74,13 @@ class GameManager:
     def clear_input(self) -> None:
         self._player_input.clear()
 
+    def calc_progress(self, correct_now) -> None:
+        if self._count_of_finish_characters == 0:
+            self._progress = 0
+            return
+        self._progress = (self._count_of_finish_characters - sum(
+            map(lambda x: len(x), self._target_text)) + correct_now) / self._count_of_finish_characters
+
     def handle_target_completed(self) -> int:
         """
         Checks if the target text is typed correctly, and provides another target word if it is.
@@ -85,7 +95,7 @@ class GameManager:
             if char != target_text[ctr]:
                 break
             ctr += 1
-
+        self.calc_progress(ctr)
         if ctr == len(target_text):
             match self._current_mode:
                 case Mode.Classic:
@@ -164,6 +174,7 @@ class GameManager:
                         break
             if total_length == count:
                 break
+        self._count_of_finish_characters = total_length
 
     def next_target_word(self) -> bool:
         raise NotImplementedError
@@ -205,3 +216,6 @@ class GameManager:
 
     def win_classic_mode(self) -> None:
         raise NotImplementedError
+
+    def get_progress(self) -> float:
+        return self._progress
