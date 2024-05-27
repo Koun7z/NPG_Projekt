@@ -1,3 +1,5 @@
+import math
+
 from src.Enumerators import Mode, Difficulty
 from src.StorageManager import StorageManager
 from src.Score import Score
@@ -30,14 +32,20 @@ class ScoreManager:
         """
         self._current_correct_chars += n_chars
 
-    def calculate_score(self, mode: Mode, difficulty: Difficulty, time: float) -> None:
+    def calculate_score(self, mode: Mode, difficulty: Difficulty, time: float) -> int:
         """
         Creates new score object
         :param mode: Current game mode
         :param difficulty: Current difficulty level
         :param time: Time taken
+        :return score
         """
-        raise NotImplementedError
+        multiplier = difficulty.value
+        match mode:
+            case Mode.Classic:
+                return math.floor(1 / (time + 1) * multiplier * 1000)
+            case _:
+                return 0
 
     def rank_score(self) -> bool:
         """
@@ -51,9 +59,3 @@ class ScoreManager:
         Updates score list with top 10 scores.
         """
         raise NotImplementedError
-
-
-
-
-
-

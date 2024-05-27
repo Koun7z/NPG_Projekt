@@ -1,3 +1,5 @@
+import math
+
 import pygame
 import pygame_gui
 from pygame_gui.core import ObjectID
@@ -6,6 +8,8 @@ from pygame_gui.elements import UIPanel, UIButton, UILabel
 from src.Counter import Counter
 from src.Layout import Layout
 from typing import List
+
+from src.ScoreManager import ScoreManager
 
 
 class ClassicGameLayout(Layout):
@@ -87,7 +91,8 @@ class ClassicGameLayout(Layout):
         self._manager.update(UIManager().get_delta_time())
         self._timer.update()
         self.next_line_holder.set_text(GameManager().get_next_target_sentence())
-        
+        self._progress_test.set_text(str(math.floor(GameManager().get_progress() * 100)) + "%")
+
         window.fill(self.get_color_of("background"))
 
         font = self.get_font_of("target_font")
