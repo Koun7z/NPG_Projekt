@@ -38,6 +38,7 @@ class ScoreManager:
         :param mode: Current game mode
         :param difficulty: Current difficulty level
         :param time: Time taken
+        :return score
         """
         multiplier = difficulty.value
         match mode:
