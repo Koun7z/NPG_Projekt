@@ -43,7 +43,7 @@ class ScoreManager:
         multiplier = difficulty.value
         match mode:
             case Mode.Classic:
-                return math.floor(time) * multiplier
+                return math.floor(1 / (time + 1) * multiplier * 1000)
             case _:
                 return 0
 
