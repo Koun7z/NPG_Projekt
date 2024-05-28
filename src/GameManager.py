@@ -37,11 +37,11 @@ class GameManager:
         self._storage_manager = StorageManager()
 
         self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-                          't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ź', 'ż', ',', '.', '?', ':', ';', '1',
-                          '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
-                          '-', '_', '+', '=', '`', '~']  # Could be in a file actually
+                          't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ś', 'ź', 'ż', ',', '.', '?', ':', ';',
+                          '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(',
+                          ')', '-', '_', '+', '=', '`', '~']  # Could be in a file actually
 
-        self.load_target_list_n_chars(200, True)
+        self.load_target_list_n_chars(50, True)
 
     def handle_input(self, event: pygame.event.Event) -> None:
 
@@ -215,7 +215,10 @@ class GameManager:
         self._current_difficulty = diff
 
     def win_classic_mode(self) -> None:
-        raise NotImplementedError
+        from src.UIManager import UIManager
+        UIManager().change_layout("ResultScreen_Layout")
+        ScoreManager().calculate_score(self._current_mode, self._current_difficulty)
+
 
     def get_progress(self) -> float:
         return self._progress

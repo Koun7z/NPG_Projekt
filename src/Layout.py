@@ -37,3 +37,9 @@ class Layout:
             return self._fontPalette[component_name]
         else:
             return pygame.font.SysFont("Arial", 12)
+
+    def start(self):
+        pass
+
+    def stop(self):
+        pass

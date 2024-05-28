@@ -4,6 +4,7 @@ from typing import Type
 import pygame
 
 from src.ClassicGameLayout import ClassicGameLayout
+from src.ResultScreenLayout import ResultScreenLayout
 from src.Layout import Layout
 from src.GameManager import GameManager
 
@@ -43,7 +44,9 @@ class UIManager:
 
         self._layouts = {
             "Classic_Game_Layout": ClassicGameLayout(),
+            "ResultScreen_Layout": ResultScreenLayout(),
         }
+        self._current_layout = ""
         self.change_layout("Classic_Game_Layout")
 
         self._game_manager = GameManager()
@@ -68,7 +71,13 @@ class UIManager:
         :return: True if successful
         """
         if layout_name in self._layouts:
+
+            if self._current_layout != "":
+                self.get_current_layout().stop()
+
             self._current_layout = layout_name
+
+            self.get_current_layout().start()
             return True
 
         return False
