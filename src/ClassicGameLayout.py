@@ -14,6 +14,8 @@ from src.ScoreManager import ScoreManager
 
 class ClassicGameLayout(Layout):
 
+    game_active: bool = False
+
     def __init__(self):
         from src.UIManager import UIManager
         self._manager = pygame_gui.UIManager((UIManager().get_width_window(),
@@ -74,7 +76,6 @@ class ClassicGameLayout(Layout):
                                         text="Lorem ipsum ...",
                                         object_id=ObjectID(class_id='@next_line_holder', object_id='#next_line_holder'),
                                         manager=self._manager)
-        self._timer.start()
 
     def render(self, window: pygame.Surface, events: List[pygame.event.Event]):
         from src.UIManager import UIManager
@@ -86,7 +87,13 @@ class ClassicGameLayout(Layout):
         for event in events:
             self._manager.process_events(event)
 
-            GameManager().handle_input(event)
+            if not self.game_active:
+                game_manager.clear_input()
+                if event.type == pygame.KEYDOWN:  # Game starts after pressing first key
+                    self.game_active = True
+                    self._timer.start()
+
+            game_manager.handle_input(event)
 
         self._manager.update(UIManager().get_delta_time())
         self._timer.update()
@@ -102,8 +109,8 @@ class ClassicGameLayout(Layout):
         font_size = font.point_size
         width = ui_manager.get_width_window()
 
-        if target_size[0] > width:
-            font.set_point_size(int(font_size * (1 - (target_size[0] - width) / width)))
+        if target_size[0] > width - 10:
+            font.set_point_size(int(font_size * (1 - (target_size[0] - (width - 10)) / (width - 10))))
 
         text_surface = ui_manager.render_input_text_surface(font)
 
@@ -117,3 +124,7 @@ class ClassicGameLayout(Layout):
         # Na przykład przyciski, obiekty gry, itp.
         self._manager.draw_ui(window)
         pygame.display.update()
+
+    def stop(self):
+        self._timer.stop()
+        ScoreManager().set_time(self._timer)

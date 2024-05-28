@@ -3,12 +3,14 @@ import math
 from src.Enumerators import Mode, Difficulty
 from src.StorageManager import StorageManager
 from src.Score import Score
+from src.Counter import Counter
 
 
 class ScoreManager:
     _instance = None
     _current_correct_chars: int
     _score: Score
+    _time: Counter
 
     _storage_manager: StorageManager
 
@@ -32,7 +34,7 @@ class ScoreManager:
         """
         self._current_correct_chars += n_chars
 
-    def calculate_score(self, mode: Mode, difficulty: Difficulty, time: float) -> int:
+    def calculate_score(self, mode: Mode, difficulty: Difficulty) -> None:
         """
         Creates new score object
         :param mode: Current game mode
@@ -43,9 +45,12 @@ class ScoreManager:
         multiplier = difficulty.value
         match mode:
             case Mode.Classic:
-                return math.floor(1 / (time + 1) * multiplier * 1000)
+                self._score = Score(math.floor(1 / (self._time.get_time() + 1) * multiplier * 1000))
             case _:
-                return 0
+                raise ValueError(f'Invalid mode: {mode}')
+
+    def get_score(self):
+        return self._score
 
     def rank_score(self) -> bool:
         """
@@ -59,3 +64,6 @@ class ScoreManager:
         Updates score list with top 10 scores.
         """
         raise NotImplementedError
+
+    def set_time(self, ctr: Counter) -> None:
+        self._time = ctr
