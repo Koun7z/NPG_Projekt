@@ -6,26 +6,10 @@ import pygame_gui
 from src.Layout import Layout
 from src.ScoreManager import ScoreManager
 
+
 class ResultScreenLayout(Layout):
     def __init__(self):
-        from src.UIManager import UIManager
-
-        # Tutaj możesz inicjować wszystkie elementy potrzebne do układu gry
-        # Na przykład tło, przyciski, obiekty gry, itp.
-        self._colorPalette = {
-            "ui_text": (69, 70, 76),  # primary text dolor
-            "ui_text_2": (230, 181, 37),  # secondary text color
-            "background": (89, 96, 128),  # primary background color
-            "background_2": (69, 98, 230),  # secondary background color
-            "target_text": (69, 70, 76),  # color of text to be typed
-            "correct_text": (230, 181, 37),  # color of correctly typed text
-            "wrong_text": (205, 115, 85)  # color of incorrectly typed text
-        }
-
-        self._fontPalette = {
-            "ui_font": UIManager().get_font("ui"),
-            "target_font": UIManager().get_font("text")  # must be monospace
-        }
+        super().__init__()
 
     def render(self, window: pygame.Surface, events: List[pygame.event.Event]):
         window.fill(self.get_color_of("background"))
