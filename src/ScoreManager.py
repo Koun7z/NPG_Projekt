@@ -1,4 +1,5 @@
 import math
+from typing import List
 
 from src.Enumerators import Mode, Difficulty
 from src.StorageManager import StorageManager
@@ -13,6 +14,7 @@ class ScoreManager:
     _time: Counter
 
     _storage_manager: StorageManager
+    _top10_scores: List[Score]
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -72,13 +74,26 @@ class ScoreManager:
         Compares current score with all other saved scores of same mode and difficulty.
         :return: True if score in top 10
         """
-        raise NotImplementedError
+        scores = StorageManager().load_player_scores(self._score.mode)
+
+        scores.append(self._score)
+        scores.sort(key=lambda score: score.value, reverse=True)
+        self._top10_scores = scores[:10]
+
+        self._score.ranking = scores.index(self._score) + 1
+
+        if self._score.ranking <= 10:
+            for i in range(self._score.ranking, len(self._top10_scores)):
+                self._top10_scores[i].ranking += 1
+            return True
+
+        return False
 
     def update_top_10(self) -> None:
         """
         Updates score list with top 10 scores.
         """
-        raise NotImplementedError
+        StorageManager().save_player_scores(self._top10_scores, self._score.mode)
 
     def set_time(self, ctr: Counter) -> None:
         self._time = ctr

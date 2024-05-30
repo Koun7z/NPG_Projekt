@@ -9,6 +9,9 @@ from src.GameManager import GameManager
 
 
 class ResultScreenLayout(Layout):
+
+    _add_name: bool
+
     def __init__(self):
         super().__init__()
 
@@ -17,23 +20,28 @@ class ResultScreenLayout(Layout):
         window.fill(self.get_color_of("background"))
 
         for event in events:
+            # Events not related to inputting name should be handled before this if statement
+            if not self._add_name:
+                continue
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:  # K_RETURN to enter xd
                 ScoreManager().set_player_name(GameManager().get_input_text())
                 GameManager().clear_input()
-
+                ScoreManager().update_top_10()
+                self._add_name = False
             GameManager().handle_input(event)
 
         font = self.get_font_of("ui_font")  #
         size = font.point_size              # To tu taK tymczasowo
         font.set_point_size(50)             #
         font.align = pygame.FONT_CENTER
-        window.blit(font.render(GameManager().get_input_text(), True, self.get_color_of("ui_text")), (100, 100))
+        if self._add_name:
+            window.blit(font.render("Enter your name to save score", True, self.get_color_of("ui_text")), (400, 100))
 
         window.blit(font.render(f"Tu bedzie wynik, a tak tymczasowo:\n"
-                                f"Name: {ScoreManager().get_score().player_name}\n"
+                                f"Name: {ScoreManager().get_score().player_name}{GameManager().get_input_text()}\n"
                                 f"Score: {ScoreManager().get_score().value}\n"
                                 f"Time: {ScoreManager().get_score().time // 60}:{ScoreManager().get_score().time % 60}"
-                                , True, self.get_color_of("ui_text")), (350, 400))
+                                , True, self.get_color_of("ui_text")), (400, 400))
 
         font.set_point_size(size)  # To też
         font.align = pygame.FONT_LEFT
@@ -41,3 +49,4 @@ class ResultScreenLayout(Layout):
 
     def start(self):
         GameManager().clear_input()
+        self._add_name = ScoreManager().rank_score()
