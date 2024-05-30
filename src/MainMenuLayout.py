@@ -40,11 +40,13 @@ class MainMenuLayout(Layout):
             object_id=ObjectID(class_id='@UIButton', object_id='#TrainButton'),
             manager=self._manager,
             text="Trenuj")
+        self.TrainButton.disable()
         self.FallingButton = UIButton(
             relative_rect=pygame.Rect((UIManager().get_width_window() / 2 - 150, 400), (300, 100)),
             object_id=ObjectID(class_id='@UIButton', object_id='#FallingButton'),
             manager=self._manager,
             text="Spadające literki")
+        self.FallingButton.disable()
         self.LeaderboardButton = UIButton(
             relative_rect=pygame.Rect((UIManager().get_width_window() / 2 - 150, 500), (300, 100)),
             object_id=ObjectID(class_id='@UIButton', object_id='#LeaderboardButton'),
@@ -63,7 +65,12 @@ class MainMenuLayout(Layout):
 
         for event in events:
             self._manager.process_events(event)
-
+            if event.type == pygame_gui.UI_BUTTON_PRESSED:
+                if event.ui_element == self.LeaderboardButton:
+                    print("Leaderboard")
+                    # TODO: Add link to LeaderBoard
+                elif event.ui_element == self.ExitButton:
+                    ui_manager.close()
         self._manager.update(UIManager().get_delta_time())
 
         window.fill(self.get_color_of("background"))

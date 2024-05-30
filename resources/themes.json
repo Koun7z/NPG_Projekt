@@ -66,5 +66,20 @@
     "font": {
       "size": "30"
     }
+  },
+  "@UIButtonDisable": {
+    "colours": {
+      "normal_bg": "#375060",
+      "hovered_bg": "#375060",
+      "normal_text": "#333333",
+      "hovered_text": "#333333"
+    },
+    "misc": {
+      "shape": "rounded_rectangle",
+      "shape_corner_radius": "20"
+    },
+    "font": {
+      "size": "30"
+    }
   }
 }
