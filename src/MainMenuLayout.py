@@ -51,12 +51,31 @@ class MainMenuLayout(Layout):
             relative_rect=pygame.Rect((UIManager().get_width_window() / 2 - 150, 500), (300, 100)),
             object_id=ObjectID(class_id='@UIButton', object_id='#LeaderboardButton'),
             manager=self._manager,
-            text="LeaderBoard")
+            text="Leaderboard")
         self.ExitButton = UIButton(
             relative_rect=pygame.Rect((UIManager().get_width_window() / 2 - 150, 600), (300, 100)),
             object_id=ObjectID(class_id='@UIButton', object_id='#ExitButton'),
             manager=self._manager,
             text="Exit")
+        self.EasyButton = UIButton(
+            relative_rect=pygame.Rect((UIManager().get_width_window() / 2 - 150 - 150 / 2, 200), (150, 100)),
+            object_id=ObjectID(class_id='@UIButton', object_id='#EasyButton'),
+            manager=self._manager,
+            visible=False,
+            text="Łatwy")
+
+        self.MediumButton = UIButton(
+            relative_rect=pygame.Rect((UIManager().get_width_window() / 2 - 150 / 2, 200), (150, 100)),
+            object_id=ObjectID(class_id='@UIButton', object_id='#MediumButton'),
+            manager=self._manager,
+            visible=False,
+            text="Średni")
+        self.HardButton = UIButton(
+            relative_rect=pygame.Rect((UIManager().get_width_window() / 2 + 150 / 2, 200), (150, 100)),
+            object_id=ObjectID(class_id='@UIButton', object_id='#HardButton'),
+            manager=self._manager,
+            visible=False,
+            text="Trudny")
 
     def render(self, window: pygame.Surface, events: List[pygame.event.Event]):
         from src.UIManager import UIManager
@@ -71,6 +90,12 @@ class MainMenuLayout(Layout):
                     # TODO: Add link to LeaderBoard
                 elif event.ui_element == self.ExitButton:
                     ui_manager.close()
+                elif event.ui_element == self.ClassicButton:
+                    self.ClassicButton.hide()
+                    self.EasyButton.show()
+                    self.MediumButton.show()
+                    self.HardButton.show()
+
         self._manager.update(UIManager().get_delta_time())
 
         window.fill(self.get_color_of("background"))
