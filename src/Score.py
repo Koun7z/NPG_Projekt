@@ -16,3 +16,4 @@ class Score:
         self.time = time
         self.mode = mode
         self.difficulty = difficulty
+

@@ -23,11 +23,20 @@ class ScoreManager:
     def _init(self):
         self._current_correct_chars = 0
         self.storage_manager = StorageManager()
+        self._score = Score()
 
     def __del__(self):
         pass
 
-    def update_score(self, n_chars: int):
+    def set_player_name(self, name: str) -> None:
+        """
+        Sets the name of the score owner
+        :param name: Player name
+        :return:
+        """
+        self._score.player_name = name
+
+    def update_score(self, n_chars: int) -> None:
         """
         Updates the score based on the current progress
         :param n_chars: Number of correctly typed characters
@@ -42,10 +51,16 @@ class ScoreManager:
         :param time: Time taken
         :return score
         """
+
+        self._score.difficulty = difficulty
+        self._score.mode = mode
+        self._score.time = self._time.get_time()
+
         multiplier = difficulty.value
         match mode:
             case Mode.Classic:
-                self._score = Score(math.floor(1 / (self._time.get_time() + 1) * multiplier * 1000))
+                self._score.value = math.floor(1 / (self._time.get_time() + 1) * multiplier * 1000)
+
             case _:
                 raise ValueError(f'Invalid mode: {mode}')
 
