@@ -219,6 +219,5 @@ class GameManager:
         UIManager().change_layout("ResultScreen_Layout")
         ScoreManager().calculate_score(self._current_mode, self._current_difficulty)
 
-
     def get_progress(self) -> float:
         return self._progress
