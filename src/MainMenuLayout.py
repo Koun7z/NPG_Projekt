@@ -6,6 +6,8 @@ from pygame_gui.core import ObjectID
 from pygame_gui.elements import UIPanel, UIButton, UILabel
 
 from src.Counter import Counter
+from src.Enumerators import Difficulty, Mode
+from src.GameManager import GameManager
 from src.Layout import Layout
 from typing import List
 
@@ -95,7 +97,15 @@ class MainMenuLayout(Layout):
                     self.EasyButton.show()
                     self.MediumButton.show()
                     self.HardButton.show()
-
+                elif event.ui_element == self.EasyButton:
+                    UIManager().change_layout("Classic_Game_Layout")
+                    GameManager().restart(Mode.Classic, Difficulty.Easy)
+                elif event.ui_element == self.MediumButton:
+                    UIManager().change_layout("Classic_Game_Layout")
+                    GameManager().restart(Mode.Classic, Difficulty.Medium)
+                elif event.ui_element == self.EasyButton:
+                    UIManager().change_layout("Classic_Game_Layout")
+                    GameManager().restart(Mode.Classic, Difficulty.Hard)
         self._manager.update(UIManager().get_delta_time())
 
         window.fill(self.get_color_of("background"))
