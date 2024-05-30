@@ -4,6 +4,7 @@ from typing import Type
 import pygame
 
 from src.ClassicGameLayout import ClassicGameLayout
+from src.MainMenuLayout import MainMenuLayout
 from src.ResultScreenLayout import ResultScreenLayout
 from src.Layout import Layout
 from src.GameManager import GameManager
@@ -40,14 +41,16 @@ class UIManager:
 
         self._font = {}
         self.add_font("text", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.ttf", 50))
-        self.add_font("ui", pygame.font.Font("./resources/fonts/UI/UbuntuMono-Regular.ttf", 20)) # UbuntuMono-Regular.ttf
+        self.add_font("ui",
+                      pygame.font.Font("./resources/fonts/UI/UbuntuMono-Regular.ttf", 20))  # UbuntuMono-Regular.ttf
 
         self._layouts = {
+            "Main_Menu_Layout": MainMenuLayout(),
             "Classic_Game_Layout": ClassicGameLayout(),
             "ResultScreen_Layout": ResultScreenLayout(),
         }
         self._current_layout = ""
-        self.change_layout("Classic_Game_Layout")
+        self.change_layout("Main_Menu_Layout")
 
         self._game_manager = GameManager()
 
