@@ -6,7 +6,8 @@ from src.Score import Score
 
 class StorageManager:
     _instance = None
-    _path_list: Dict[str, str]
+    _quotes_path_list: Dict[Difficulty, str]
+    _score_path_list: Dict[Mode, str]
     _quotes: List[str]
 
     def __new__(cls, *args, **kwargs):
@@ -18,38 +19,57 @@ class StorageManager:
     def _init(self):
         self._player_scores = {}
         self._quotes = []
-        self._path_list = {"Difficulty.Easy": "./resources/texts/easy_quotes.txt",
-                           "Difficulty.Medium": "./resources/texts/medium_quotes.txt",
-                           "Difficulty.Hard": "./resources/texts/Lorem.txt",
-                           "player": "./resources/players/scores.json"}
+        self._quotes_path_list = {
+            Difficulty.Easy: "./resources/texts/easy_quotes.txt",
+            Difficulty.Medium: "./resources/texts/medium_quotes.txt",
+            Difficulty.Hard: "./resources/texts/Lorem.txt"}
 
-    # def add_player_score(self, score: Score) -> None:
-    #     self._player_scores.append(score)
+        self._score_path_list = {
+            Mode.Classic: "./data/savefiles/classic_scores.cvs",
+            Mode.FallingLetters: "./data/savefiles/falling_scores.cvs",
+            Mode.Training: "./data/savefiles/training_scores.cvs"
+        }
 
-    # def get_player_score(self, player_name: str) -> int:
-    #     return self._player_scores.get(player_name, 0)
-
-    def save_player_scores(self, scores: List[Score]) -> bool:
+    def save_player_scores(self, scores: List[Score], mode: Mode) -> bool:
         """
         Saves passed list of scores
         :param scores: list of scores
+        :param mode: game mode
         :return: True if successful, False otherwise
         """
         try:
-            filename = self._path_list["player"]
-            with open(filename, 'w') as f:
-                json.dump(scores, f)
-            return True
+            filename = self._score_path_list[mode]
+
+            f = open(filename, 'w')
+            for score in scores:
+                f.write(score.toCSV() + '\n')
+
         except Exception as e:
             print(f"Error saving player scores: {e}")
             return False
 
-    def load_player_scores(self) -> List[Score]:
-        try:
-            filename = self._path_list["player"]
-            with open(filename, 'r') as f:
-                return json.load(f)
+        f.close()
+        return True
 
+    def load_player_scores(self, mode: Mode) -> List[Score]:
+        """
+        Returns list of saved scores
+        :param mode: game mode
+        :return: list of saved scores
+        """
+        try:
+            filename = self._score_path_list[mode]
+            with open(filename, 'r') as f:
+
+                lines: list[str] = f.readlines()
+                scores: list[Score] = []
+
+                for line in lines:
+                    data = [item.strip() for item in line.split(',')]
+                    scores.append(Score(int(data[2]), data[1], int(data[0]), int(data[3]), Mode(int(data[4])),
+                                        Difficulty(int(data[5]))))
+
+                return scores
         except Exception as e:
             print(f"Error loading player scores: {e}")
 
@@ -61,7 +81,7 @@ class StorageManager:
         :return: true if successfully loaded quotes
         """
         try:
-            filename = self._path_list[str(diff)]
+            filename = self._quotes_path_list[diff]
             with open(filename, 'r', encoding='utf-8') as f:
                 self._quotes = [line.strip() for line in f if line.strip()]
             return True

@@ -216,8 +216,9 @@ class GameManager:
 
     def win_classic_mode(self) -> None:
         from src.UIManager import UIManager
-        UIManager().change_layout("ResultScreen_Layout")
         ScoreManager().calculate_score(self._current_mode, self._current_difficulty)
+        UIManager().change_layout("ResultScreen_Layout")
+
 
     def get_progress(self) -> float:
         return self._progress

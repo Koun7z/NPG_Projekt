@@ -79,6 +79,7 @@ class ClassicGameLayout(Layout):
                 if event.type == pygame.KEYDOWN:  # Game starts after pressing first key
                     self.game_active = True
                     self._timer.start()
+                    ScoreManager().set_time(self._timer)
 
             game_manager.handle_input(event)
 
@@ -114,4 +115,4 @@ class ClassicGameLayout(Layout):
 
     def stop(self):
         self._timer.stop()
-        ScoreManager().set_time(self._timer)
+

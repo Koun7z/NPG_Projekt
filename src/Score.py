@@ -2,9 +2,9 @@ from src.Enumerators import Mode, Difficulty
 
 
 class Score:
-    value: int
-    player_name: str
     ranking: int
+    player_name: str
+    value: int
     time: float
     mode: Mode
     difficulty: Difficulty
@@ -16,4 +16,13 @@ class Score:
         self.time = time
         self.mode = mode
         self.difficulty = difficulty
+
+    def __str__(self) -> str:
+        return f"{self.ranking}. Player: {self.player_name} | Score: {self.value} | Time: {self.time // 60}:{self.time % 60} | Mode: {self.mode.name} | Difficulty: {self.difficulty.name}"
+
+    def toCSV(self) -> str:
+        """
+        :return: Score data in CSV format
+        """
+        return f"{self.ranking}, {self.player_name}, {self.value}, {self.time}, {self.mode.value}, {self.difficulty.value}"
 
