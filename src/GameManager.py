@@ -43,6 +43,12 @@ class GameManager:
 
         self.load_target_list_n_chars(50, True)
 
+    def get_mode(self):
+        return self._current_mode
+
+    def get_difficulty(self):
+        return self._current_difficulty
+
     def restart(self, mode: Mode, difficulty: Difficulty):
         self._init()
         self.set_mode(mode)

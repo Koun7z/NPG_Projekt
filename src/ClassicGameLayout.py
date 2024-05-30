@@ -13,7 +13,6 @@ from src.ScoreManager import ScoreManager
 
 
 class ClassicGameLayout(Layout):
-
     game_active: bool = False
 
     def __init__(self):
@@ -73,14 +72,19 @@ class ClassicGameLayout(Layout):
 
         for event in events:
             self._manager.process_events(event)
-
+            if event.type == pygame_gui.UI_BUTTON_PRESSED:
+                if event.ui_element == self._prev_button:
+                    UIManager().change_layout("Main_Menu_Layout")
+                if event.ui_element == self._reset:
+                    self.game_active = False
+                    self._timer.reset()
+                    GameManager().restart(GameManager().get_mode(), GameManager().get_difficulty())
             if not self.game_active:
                 game_manager.clear_input()
                 if event.type == pygame.KEYDOWN:  # Game starts after pressing first key
                     self.game_active = True
                     self._timer.start()
                     ScoreManager().set_time(self._timer)
-
             game_manager.handle_input(event)
 
         self._manager.update(UIManager().get_delta_time())
@@ -115,4 +119,3 @@ class ClassicGameLayout(Layout):
 
     def stop(self):
         self._timer.stop()
-

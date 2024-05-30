@@ -103,7 +103,7 @@ class MainMenuLayout(Layout):
                 elif event.ui_element == self.MediumButton:
                     UIManager().change_layout("Classic_Game_Layout")
                     GameManager().restart(Mode.Classic, Difficulty.Medium)
-                elif event.ui_element == self.EasyButton:
+                elif event.ui_element == self.HardButton:
                     UIManager().change_layout("Classic_Game_Layout")
                     GameManager().restart(Mode.Classic, Difficulty.Hard)
         self._manager.update(UIManager().get_delta_time())
