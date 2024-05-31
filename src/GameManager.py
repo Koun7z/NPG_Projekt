@@ -43,6 +43,18 @@ class GameManager:
 
         self.load_target_list_n_chars(50, True)
 
+    def get_mode(self):
+        return self._current_mode
+
+    def get_difficulty(self):
+        return self._current_difficulty
+
+    def restart(self, mode: Mode, difficulty: Difficulty):
+        self._init()
+        self.set_mode(mode)
+        self.set_difficulty(difficulty)
+        self.load_target_list_n_chars(50, True)
+
     def handle_input(self, event: pygame.event.Event) -> None:
 
         if event.type != pygame.KEYDOWN:
@@ -218,7 +230,6 @@ class GameManager:
         from src.UIManager import UIManager
         ScoreManager().calculate_score(self._current_mode, self._current_difficulty)
         UIManager().change_layout("ResultScreen_Layout")
-
 
     def get_progress(self) -> float:
         return self._progress

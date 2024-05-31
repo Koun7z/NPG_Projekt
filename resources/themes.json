@@ -4,6 +4,14 @@
       "dark_bg": "#596AB3"
     }
   },
+  "@title": {
+    "colours": {
+      "normal_text": "#E3B325"
+    },
+    "font": {
+      "size": "100"
+    }
+  },
   "@top_bar_button": {
     "colours": {
       "normal_bg": "#596AB3",
@@ -37,11 +45,41 @@
     }
   },
   "#next_line_holder": {
-        "colours": {
+    "colours": {
       "normal_text": "#6879C6"
     },
     "font": {
       "size": "20"
+    }
+  },
+  "@UIButton": {
+    "colours": {
+      "normal_bg": "#596080",
+      "hovered_bg": "#E6B525",
+      "normal_text": "#000000",
+      "hovered_text": "#000000"
+    },
+    "misc": {
+      "shape": "rounded_rectangle",
+      "shape_corner_radius": "20"
+    },
+    "font": {
+      "size": "30"
+    }
+  },
+  "@UIButtonDisable": {
+    "colours": {
+      "normal_bg": "#375060",
+      "hovered_bg": "#375060",
+      "normal_text": "#333333",
+      "hovered_text": "#333333"
+    },
+    "misc": {
+      "shape": "rounded_rectangle",
+      "shape_corner_radius": "20"
+    },
+    "font": {
+      "size": "30"
     }
   }
 }
