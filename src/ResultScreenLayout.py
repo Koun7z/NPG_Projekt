@@ -40,7 +40,7 @@ class ResultScreenLayout(Layout):
         window.blit(font.render(f"Tu bedzie wynik, a tak tymczasowo:\n"
                                 f"Name: {ScoreManager().get_score().player_name}{GameManager().get_input_text()}\n"
                                 f"Score: {ScoreManager().get_score().value}\n"
-                                f"Time: {ScoreManager().get_score().time // 60}:{ScoreManager().get_score().time % 60}"
+                                f"Time: {ScoreManager().get_score().time // 60:.0f}:{ScoreManager().get_score().time % 60:.0f},{(ScoreManager().get_score().time * 100) % 100:.0f}\n"
                                 , True, self.get_color_of("ui_text")), (400, 400))
 
         font.set_point_size(size)  # To też

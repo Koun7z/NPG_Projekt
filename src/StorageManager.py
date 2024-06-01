@@ -8,7 +8,7 @@ class StorageManager:
     _instance = None
     _quotes_path_list: Dict[Difficulty, str]
     _score_path_list: Dict[Mode, str]
-    _quotes: List[str]
+    _quotes: dict[Difficulty, List[str]]
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -18,7 +18,7 @@ class StorageManager:
 
     def _init(self):
         self._player_scores = {}
-        self._quotes = []
+        self._quotes = {}
         self._quotes_path_list = {
             Difficulty.Easy: "./resources/texts/easy_quotes.txt",
             Difficulty.Medium: "./resources/texts/medium_quotes.txt",
@@ -83,7 +83,7 @@ class StorageManager:
         try:
             filename = self._quotes_path_list[diff]
             with open(filename, 'r', encoding='utf-8') as f:
-                self._quotes = [line.strip() for line in f if line.strip()]
+                self._quotes[diff] = [line.strip() for line in f if line.strip()]
             return True
         except Exception as e:
             print(f"Error loading quotes: {e}")
@@ -96,6 +96,6 @@ class StorageManager:
         :param mode: game mode
         :return: list of quotes
         """
-        if self._quotes is None or len(self._quotes) == 0:
+        if diff not in self._quotes:
             self.load_quotes(diff, mode)
-        return self._quotes
+        return self._quotes[diff]
