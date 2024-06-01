@@ -41,8 +41,6 @@ class GameManager:
                           '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(',
                           ')', '-', '_', '+', '=', '`', '~']  # Could be in a file actually
 
-        self.load_target_list_n_chars(50, True)
-
     def get_mode(self):
         return self._current_mode
 
@@ -111,11 +109,11 @@ class GameManager:
         if ctr == len(target_text):
             match self._current_mode:
                 case Mode.Classic:
+                    ScoreManager().update_score(len(target_text))
+
                     if self.next_target_sentence():
                         self.win_classic_mode()
                     self._player_input.clear()
-
-                    ScoreManager().update_score(len(target_text))
 
                 case Mode.Menu:
                     raise NotImplementedError
