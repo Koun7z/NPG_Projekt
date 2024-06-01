@@ -22,13 +22,14 @@ class ScoreManager:
             cls._instance._init()
         return cls._instance
 
+    @classmethod
+    def reset(cls):
+        cls._instance = None
+
     def _init(self):
         self._current_correct_chars = 0
         self.storage_manager = StorageManager()
         self._score = Score()
-
-    def __del__(self):
-        pass
 
     def set_player_name(self, name: str) -> None:
         """

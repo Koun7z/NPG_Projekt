@@ -66,7 +66,7 @@ class StorageManager:
 
                 for line in lines:
                     data = [item.strip() for item in line.split(',')]
-                    scores.append(Score(int(data[2]), data[1], int(data[0]), int(data[3]), Mode(int(data[4])),
+                    scores.append(Score(int(data[2]), data[1], int(data[0]), float(data[3]), Mode(int(data[4])),
                                         Difficulty(int(data[5]))))
 
                 return scores
