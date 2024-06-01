@@ -8,7 +8,7 @@ from src.MainMenuLayout import MainMenuLayout
 from src.ResultScreenLayout import ResultScreenLayout
 from src.Layout import Layout
 from src.GameManager import GameManager
-
+from src.Enumerators import Mode
 
 class UIManager:
     _instance = None
@@ -35,14 +35,17 @@ class UIManager:
         self._height_window = 900
 
         pygame.init()
+        pygame.display.set_caption('Mistrz klawiatury')
         self._window = pygame.display.set_mode((self._width_window, self._height_window))
         self._clock = pygame.time.Clock()
         self._running = True
 
         self._font = {}
         self.add_font("text", pygame.font.Font("./resources/fonts/text/SometypeMono-Regular.ttf", 50))
-        self.add_font("ui",
-                      pygame.font.Font("./resources/fonts/UI/UbuntuMono-Regular.ttf", 20))  # UbuntuMono-Regular.ttf
+        self.add_font("ui", pygame.font.Font("./resources/fonts/UI/UbuntuMono-Regular.ttf", 20))
+        self.add_font("result", pygame.font.Font("./resources/fonts/UI/UbuntuMono-Regular.ttf", 50))
+
+        self.get_font("result").align = pygame.FONT_CENTER
 
         self._layouts = {
             "Main_Menu_Layout": MainMenuLayout(),
@@ -51,6 +54,7 @@ class UIManager:
         }
         self._current_layout = ""
         self.change_layout("Main_Menu_Layout")
+        #self.change_layout("ResultScreen_Layout")
 
         self._game_manager = GameManager()
 
@@ -88,6 +92,23 @@ class UIManager:
     def get_current_layout_name(self) -> str:
         return self._current_layout
 
+    def get_layout_name_by_mode(self, mode: Mode):
+        match mode:
+            case Mode.Classic:
+                return "Classic_Game_Layout"
+
+            case Mode.Training:
+                raise NotImplementedError
+
+            case Mode.FallingLetters:
+                raise NotImplementedError
+
+            case Mode.Menu:
+                return "Main_Menu_Layout"
+
+            case _:
+                raise KeyError(f'Unknown mode: {mode}')
+
     def get_current_layout(self) -> Layout:
         return self._layouts.get(self._current_layout)
 
@@ -108,7 +129,8 @@ class UIManager:
         """
         if font_name in self._font:
             return self._font[font_name]
-        raise KeyError
+
+        return pygame.font.Font(None)
 
     def get_delta_time(self):
         return self._delta_time

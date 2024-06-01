@@ -22,13 +22,14 @@ class ScoreManager:
             cls._instance._init()
         return cls._instance
 
+    @classmethod
+    def reset(cls):
+        cls._instance = None
+
     def _init(self):
         self._current_correct_chars = 0
         self.storage_manager = StorageManager()
         self._score = Score()
-
-    def __del__(self):
-        pass
 
     def set_player_name(self, name: str) -> None:
         """
@@ -56,12 +57,12 @@ class ScoreManager:
 
         self._score.difficulty = difficulty
         self._score.mode = mode
-        self._score.time = self._time.get_time()
+        self._score.time = self._time.get_time_f()
 
         multiplier = difficulty.value
         match mode:
             case Mode.Classic:
-                self._score.value = math.floor(1 / (self._time.get_time() + 1) * multiplier * 1000)
+                self._score.value = math.floor(self._current_correct_chars / (self._time.get_time_f() + 1) * multiplier * 100)
 
             case _:
                 raise ValueError(f'Invalid mode: {mode}')

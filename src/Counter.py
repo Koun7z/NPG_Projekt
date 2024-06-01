@@ -49,9 +49,12 @@ class Counter:
         Method that returns time on counter.
         :return:  Return time in seconds
         """
+        return int(self.get_time_f())
+
+    def get_time_f(self) -> float:
         if self._is_active:
-            return int(time.time() - self._start_time)
-        return int(self._stop_time - self._start_time)
+            return time.time() - self._start_time
+        return self._stop_time - self._start_time
 
     def update(self):
         """

@@ -94,7 +94,7 @@ class ClassicGameLayout(Layout):
 
         window.fill(self.get_color_of("background"))
 
-        font = self.get_font_of("target_font")
+        font = ui_manager.get_font("text")
         target = game_manager.get_target_text()
 
         target_size = font.size(target)
@@ -116,6 +116,10 @@ class ClassicGameLayout(Layout):
         # Na przykład przyciski, obiekty gry, itp.
         self._manager.draw_ui(window)
         pygame.display.update()
+
+    def start(self):
+        self._timer.reset()
+        self.game_active = False
 
     def stop(self):
         self._timer.stop()

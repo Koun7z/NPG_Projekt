@@ -28,10 +28,8 @@ class GameManager:
 
     def _init(self):
         self._player_input = []
-        self._current_mode = Mode.Classic
         self._target_text = []
         self._progress = 0
-        self._current_difficulty = Difficulty.Hard
         self._current_mode = Mode.Classic
         self._count_of_finish_characters = 0
         self._storage_manager = StorageManager()
@@ -41,19 +39,27 @@ class GameManager:
                           '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(',
                           ')', '-', '_', '+', '=', '`', '~']  # Could be in a file actually
 
-        self.load_target_list_n_chars(50, True)
-
     def get_mode(self):
         return self._current_mode
 
     def get_difficulty(self):
         return self._current_difficulty
 
-    def restart(self, mode: Mode, difficulty: Difficulty):
+    def restart(self, mode: Mode = -1, difficulty: Difficulty = -1):
+        """
+        Restart game state
+        :param mode: desired mode (-1 to keep current mode)
+        :param difficulty: desired difficulty (-1 to keep current difficulty)
+        :return:
+        """
         self._init()
-        self.set_mode(mode)
-        self.set_difficulty(difficulty)
-        self.load_target_list_n_chars(50, True)
+
+        if mode != -1:
+            self.set_mode(mode)
+        if difficulty != -1:
+            self.set_difficulty(difficulty)
+
+        self.load_target_list_n_chars(200, True)
 
     def handle_input(self, event: pygame.event.Event) -> None:
 
@@ -111,11 +117,11 @@ class GameManager:
         if ctr == len(target_text):
             match self._current_mode:
                 case Mode.Classic:
+                    ScoreManager().update_score(len(target_text))
+
                     if self.next_target_sentence():
                         self.win_classic_mode()
                     self._player_input.clear()
-
-                    ScoreManager().update_score(len(target_text))
 
                 case Mode.Menu:
                     raise NotImplementedError
