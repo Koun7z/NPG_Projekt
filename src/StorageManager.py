@@ -22,7 +22,7 @@ class StorageManager:
         self._quotes_path_list = {
             Difficulty.Easy: "./resources/texts/easy_quotes.txt",
             Difficulty.Medium: "./resources/texts/medium_quotes.txt",
-            Difficulty.Hard: "./resources/texts/Lorem.txt"}
+            Difficulty.Hard: "./resources/texts/hard_quotes.txt"}
 
         self._score_path_list = {
             (Mode.Classic, Difficulty.Easy): "./data/savefiles/classic_scores_easy.cvs",
