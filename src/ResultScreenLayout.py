@@ -46,7 +46,7 @@ class ResultScreenLayout(Layout):
                                             container=self._top_bar)
 
         self._enter_name_text = UILabel(relative_rect=pygame.Rect((350, -20), (UIManager().get_width_window(), 160)),
-                                        text="Niestety nie udało ci się osiągnąć nowego rekordu",
+                                        text="Niestety nie udało ci się\nosiągnąć nowego rekordu\n       ",
                                         object_id=ObjectID(class_id='@progress_test', object_id='#progress_test'),
                                         manager=self._manager)
 

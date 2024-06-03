@@ -34,10 +34,10 @@ class GameManager:
         self._count_of_finish_characters = 0
         self._storage_manager = StorageManager()
 
-        self.CHAR_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-                          't', 'u', 'v', 'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ś', 'ź', 'ż', ',', '.', '?', ':', ';',
-                          '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(',
-                          ')', '-', '_', '+', '=', '`', '~']  # Could be in a file actually
+        self.CHAR_LIST = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4',
+                          '5', '6', '7', '8', '9', ':', ';', '=', '?', '@', '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f',
+                          'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
+                          'z', '~', 'ó', 'ą', 'ć', 'ę', 'ł', 'ń', 'ś', 'ź', 'ż', '–']  # Could be in a file actually
 
     def get_mode(self):
         return self._current_mode
