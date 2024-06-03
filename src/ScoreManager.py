@@ -51,7 +51,6 @@ class ScoreManager:
         Creates new score object
         :param mode: Current game mode
         :param difficulty: Current difficulty level
-        :param time: Time taken
         :return score
         """
 
@@ -59,10 +58,9 @@ class ScoreManager:
         self._score.mode = mode
         self._score.time = self._time.get_time_f()
 
-        multiplier = difficulty.value
         match mode:
             case Mode.Classic:
-                self._score.value = math.floor(self._current_correct_chars / (self._time.get_time_f() + 1) * multiplier * 100)
+                self._score.value = math.floor(self._current_correct_chars / (self._time.get_time_f() + 1) * 60)
 
             case _:
                 raise ValueError(f'Invalid mode: {mode}')
@@ -75,7 +73,7 @@ class ScoreManager:
         Compares current score with all other saved scores of same mode and difficulty.
         :return: True if score in top 10
         """
-        scores = StorageManager().load_player_scores(self._score.mode)
+        scores = StorageManager().load_player_scores(self._score.mode, self._score.difficulty)
 
         scores.append(self._score)
         scores.sort(key=lambda score: score.value, reverse=True)
@@ -94,7 +92,7 @@ class ScoreManager:
         """
         Updates score list with top 10 scores.
         """
-        StorageManager().save_player_scores(self._top10_scores, self._score.mode)
+        StorageManager().save_player_scores(self._top10_scores, self._score.mode, self._score.difficulty)
 
     def set_time(self, ctr: Counter) -> None:
         self._time = ctr

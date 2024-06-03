@@ -7,7 +7,7 @@ from src.Score import Score
 class StorageManager:
     _instance = None
     _quotes_path_list: Dict[Difficulty, str]
-    _score_path_list: Dict[Mode, str]
+    _score_path_list: Dict[tuple[Mode, Difficulty], str]
     _quotes: dict[Difficulty, List[str]]
 
     def __new__(cls, *args, **kwargs):
@@ -25,20 +25,27 @@ class StorageManager:
             Difficulty.Hard: "./resources/texts/Lorem.txt"}
 
         self._score_path_list = {
-            Mode.Classic: "./data/savefiles/classic_scores.cvs",
-            Mode.FallingLetters: "./data/savefiles/falling_scores.cvs",
-            Mode.Training: "./data/savefiles/training_scores.cvs"
+            (Mode.Classic, Difficulty.Easy): "./data/savefiles/classic_scores_easy.cvs",
+            (Mode.Classic, Difficulty.Medium): "./data/savefiles/classic_scores_medium.cvs",
+            (Mode.Classic, Difficulty.Hard): "./data/savefiles/classic_scores_hard.cvs",
+            (Mode.FallingLetters, Difficulty.Easy): "./data/savefiles/falling_scores_easy.cvs",
+            (Mode.FallingLetters, Difficulty.Medium): "./data/savefiles/falling_scores_medium.cvs",
+            (Mode.FallingLetters, Difficulty.Hard): "./data/savefiles/falling_scores_hard.cvs",
+            (Mode.Training, Difficulty.Easy): "./data/savefiles/training_scores_easy.cvs",
+            (Mode.Training, Difficulty.Medium): "./data/savefiles/training_scores_medium.cvs",
+            (Mode.Training, Difficulty.Hard): "./data/savefiles/training_scores_hard.cvs"
         }
 
-    def save_player_scores(self, scores: List[Score], mode: Mode) -> bool:
+    def save_player_scores(self, scores: List[Score], mode: Mode, diff: Difficulty) -> bool:
         """
         Saves passed list of scores
         :param scores: list of scores
         :param mode: game mode
+        :param diff: game difficulty
         :return: True if successful, False otherwise
         """
         try:
-            filename = self._score_path_list[mode]
+            filename = self._score_path_list[(mode, diff)]
 
             f = open(filename, 'w')
             for score in scores:
@@ -51,14 +58,15 @@ class StorageManager:
         f.close()
         return True
 
-    def load_player_scores(self, mode: Mode) -> List[Score]:
+    def load_player_scores(self, mode: Mode, diff: Difficulty) -> List[Score]:
         """
         Returns list of saved scores
         :param mode: game mode
+        :param diff: game difficulty
         :return: list of saved scores
         """
         try:
-            filename = self._score_path_list[mode]
+            filename = self._score_path_list[(mode, diff)]
             with open(filename, 'r') as f:
 
                 lines: list[str] = f.readlines()

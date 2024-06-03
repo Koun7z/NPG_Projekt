@@ -54,6 +54,8 @@ class GameManager:
         """
         self._init()
 
+        ScoreManager.reset()
+
         if mode != -1:
             self.set_mode(mode)
         if difficulty != -1:
