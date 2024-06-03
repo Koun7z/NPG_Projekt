@@ -55,7 +55,7 @@ class UIManager:
             "LeaderboardLayout": LeaderboardLayout(),
         }
         self._current_layout = ""
-        self.change_layout("LeaderboardLayout")
+        self.change_layout("Main_Menu_Layout")
 
         self._game_manager = GameManager()
 

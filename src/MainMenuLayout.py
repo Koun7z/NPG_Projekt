@@ -88,8 +88,7 @@ class MainMenuLayout(Layout):
             self._manager.process_events(event)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == self.LeaderboardButton:
-                    print("Leaderboard")
-                    # TODO: Add link to LeaderBoard
+                    UIManager().change_layout("LeaderboardLayout")
                 elif event.ui_element == self.ExitButton:
                     ui_manager.close()
                 elif event.ui_element == self.ClassicButton:

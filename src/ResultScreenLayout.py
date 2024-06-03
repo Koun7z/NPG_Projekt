@@ -7,6 +7,7 @@ from pygame_gui.core import ObjectID
 from pygame_gui.elements import UIPanel, UIButton, UILabel
 
 from src.Layout import Layout
+from src.LeaderboardLayout import LeaderboardLayout
 from src.ScoreManager import ScoreManager
 from src.GameManager import GameManager
 
@@ -40,7 +41,8 @@ class ResultScreenLayout(Layout):
                                container=self._top_bar)
 
         self._score_board_button = UIButton(relative_rect=pygame.Rect((510, 50), (200, 100)),
-                                            object_id=ObjectID(class_id='@top_bar_button', object_id='#score_board_button'),
+                                            object_id=ObjectID(class_id='@top_bar_button',
+                                                               object_id='#score_board_button'),
                                             manager=self._manager,
                                             text="Score Board",
                                             container=self._top_bar)
@@ -69,8 +71,10 @@ class ResultScreenLayout(Layout):
                     UIManager().change_layout(UIManager().get_layout_name_by_mode(GameManager().get_mode()))
 
                 if event.ui_element == self._score_board_button:
-                    # TODO: add Scoreboard transition
-                    print("ScoreBoard")
+                    UIManager().change_layout("LeaderboardLayout")
+
+                    UIManager().get_current_layout().change_layout(GameManager().get_mode(),
+                                                                   GameManager().get_difficulty())
 
             # Events not related to inputting name should be handled before this if statement
             if not self._add_name:
