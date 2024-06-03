@@ -9,7 +9,8 @@ class Score:
     mode: Mode
     difficulty: Difficulty
 
-    def __init__(self, value: int = 0, player_name: str = "", ranking: int = -1, time: float = -1, mode: Mode = Mode.Classic, difficulty: Difficulty = Difficulty.Easy):
+    def __init__(self, value: int = 0, player_name: str = "", ranking: int = -1, time: float = -1,
+                 mode: Mode = Mode.Classic, difficulty: Difficulty = Difficulty.Easy):
         self.value = value
         self.player_name = player_name
         self.ranking = ranking
@@ -20,9 +21,11 @@ class Score:
     def __str__(self) -> str:
         return f"{self.ranking}. Player: {self.player_name} | Score: {self.value} | Time: {self.time // 60}:{self.time % 60} | Mode: {self.mode.name} | Difficulty: {self.difficulty.name}"
 
+    def to_leaderboard(self) -> str:
+        return f"{self.ranking}. {self.player_name}:{self.value}"
+
     def toCSV(self) -> str:
         """
         :return: Score data in CSV format
         """
         return f"{self.ranking}, {self.player_name}, {self.value}, {self.time}, {self.mode.value}, {self.difficulty.value}"
-
