@@ -6,6 +6,7 @@ import pygame
 from src.ClassicGameLayout import ClassicGameLayout
 from src.MainMenuLayout import MainMenuLayout
 from src.ResultScreenLayout import ResultScreenLayout
+from src.LeaderboardLayout import LeaderboardLayout
 from src.Layout import Layout
 from src.GameManager import GameManager
 from src.Enumerators import Mode
@@ -51,10 +52,10 @@ class UIManager:
             "Main_Menu_Layout": MainMenuLayout(),
             "Classic_Game_Layout": ClassicGameLayout(),
             "ResultScreen_Layout": ResultScreenLayout(),
+            "LeaderboardLayout": LeaderboardLayout(),
         }
         self._current_layout = ""
         self.change_layout("Main_Menu_Layout")
-        #self.change_layout("ResultScreen_Layout")
 
         self._game_manager = GameManager()
 

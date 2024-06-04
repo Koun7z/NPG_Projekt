@@ -4,6 +4,11 @@
       "dark_bg": "#596AB3"
     }
   },
+  "@top_bar_leader": {
+    "colours": {
+      "dark_bg": "#A6935B"
+    }
+  },
   "@title": {
     "colours": {
       "normal_text": "#E3B325"
@@ -19,6 +24,22 @@
       "normal_border": "#45464C",
       "normal_text": "#45464C",
       "hovered_text": "#45464C"
+    },
+    "misc": {
+      "shape": "rounded_rectangle",
+      "shape_corner_radius": "50"
+    },
+    "font": {
+      "size": "30"
+    }
+  },
+  "@top_bar_button_leader": {
+    "colours": {
+      "normal_bg": "#A6935B",
+      "hovered_bg": "#E6B525",
+      "normal_border": "#45464C",
+      "normal_text": "#000000",
+      "hovered_text": "#000000"
     },
     "misc": {
       "shape": "rounded_rectangle",
@@ -65,6 +86,26 @@
     },
     "font": {
       "size": "30"
+    }
+  },
+  "@leader_list_item": {
+    "colours": {
+      "normal_text": "#E6B525"
+    },
+    "font": {
+      "size": "40"
+    }
+  },
+  "@leader_list_item_bg": {
+    "colours": {
+      "normal_bg": "#45464C"
+    },
+    "misc": {
+      "shape": "rounded_rectangle",
+      "shape_corner_radius": "50"
+    },
+    "font": {
+      "size": "40"
     }
   },
   "@UIButtonDisable": {
