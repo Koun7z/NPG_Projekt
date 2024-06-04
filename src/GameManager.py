@@ -112,7 +112,7 @@ class GameManager:
 
         ctr = 0
         for char in input_text:
-            if char != target_text[ctr]:
+            if ctr == len(input_text) or char != target_text[ctr]:
                 break
             ctr += 1
         self.calc_progress(ctr)
