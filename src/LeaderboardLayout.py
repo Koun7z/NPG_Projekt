@@ -98,7 +98,7 @@ class LeaderboardLayout(Layout):
         self.load_score()
 
     def load_score(self):
-        scores: List[Score] = StorageManager().load_player_scores(self.mode)
+        scores: List[Score] = StorageManager().load_player_scores(self.mode, self.difficulty)
         scores = list(filter(lambda s: s.difficulty == self.difficulty, scores))
         scores = sorted(scores, key=lambda s: s.ranking)
         print(scores)
