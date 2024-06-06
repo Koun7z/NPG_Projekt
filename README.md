@@ -22,7 +22,8 @@ Mistrz Klawiatury to gra w której zadaniem gracza jest możliwie jak najszybsze
 - **Poziom trudności**: graj w każdy z trybów na trzech poziomach trudności
   
 - **Ranking**: zapisuj swoje najlepsze wyniki w systemie rankingowym
-
+## Link do zaaktualizowanych diagramów na platformie drawio
+https://aghedupl-my.sharepoint.com/:u:/g/personal/kmazur_student_agh_edu_pl/EekcssABLj5CjMfLzjRKH0wB3MjTKACfrfj7tJBcMupAlA?e=hb0ayo
 ## Instalacja
 1. Sklonuj repozytorium:
    
