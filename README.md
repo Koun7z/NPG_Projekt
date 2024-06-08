@@ -47,7 +47,7 @@ Biblioteki i narzedzia niezbędne do działania programu
 | --- | --- |
 | Python | >= 3.11 |
 | Pygame-ce | >= 2.4 |
-| pygame_gui | >= 0.6.10 |
+| pygame_gui | == 0.6.10 |
 
 
 ## Przyszłe implementacje
