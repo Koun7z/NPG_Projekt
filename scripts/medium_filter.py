@@ -1,6 +1,6 @@
 from collections import Counter
 
-f = open("../lalka_stripped.txt", "r")
+f = open("../muzykanci.txt", "r", encoding="utf-8")
 
 lines = f.readlines()
 
@@ -14,8 +14,6 @@ rep: set[str] = set()
 chars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
          'w', 'x', 'y', 'z', 'ą', 'ę', 'ć', 'ó', 'ś', 'ź', 'ż', ',', '.', '?', ':', ';', '1', '2', '3', '4', '5', '6',
          '7', '8', '9', '0', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '`', '~'}
-
-print(chars)
 
 bad_chars = ['«', '»', 'ç', 'ö', '*']
 

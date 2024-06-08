@@ -101,8 +101,7 @@ class LeaderboardLayout(Layout):
         scores: List[Score] = StorageManager().load_player_scores(self.mode, self.difficulty)
         scores = list(filter(lambda s: s.difficulty == self.difficulty, scores))
         scores = sorted(scores, key=lambda s: s.ranking)
-        print(scores)
-        print(len(scores))
+
         for i in range(len(self.leader_list)):
             if len(scores) > i:
                 self.leader_list[i].set_text(scores[i].to_leaderboard())

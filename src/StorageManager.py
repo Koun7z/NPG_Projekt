@@ -79,9 +79,8 @@ class StorageManager:
 
                 return scores
         except Exception as e:
-            print(f"Error loading player scores: {e}")
+            return []
 
-        return []
 
     def load_quotes(self, diff: Difficulty, mode: Mode) -> bool:
         """
@@ -94,7 +93,6 @@ class StorageManager:
                 self._quotes[diff] = [line.strip() for line in f if line.strip()]
             return True
         except Exception as e:
-            print(f"Error loading quotes: {e}")
             return False
 
     def get_quotes(self, diff: Difficulty, mode: Mode) -> List[str]:
