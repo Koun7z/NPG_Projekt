@@ -25,13 +25,31 @@ Mistrz Klawiatury to gra w której zadaniem gracza jest możliwie jak najszybsze
 ## Link do zaaktualizowanych diagramów na platformie drawio
 https://aghedupl-my.sharepoint.com/:u:/g/personal/kmazur_student_agh_edu_pl/EekcssABLj5CjMfLzjRKH0wB3MjTKACfrfj7tJBcMupAlA?e=hb0ayo
 ## Instalacja
-1. Sklonuj repozytorium:
-   
-    ```bash
-    git clone https://github.com/yourusername/keyboard-master.git
-    ```
-2. Po uruchomieniu gry wybierz tryb oraz pozion trudności w menu głównym. Podążaj za wyświetlanymi na ekranie instrukcjami. W prawym górnym rogu ekranu możesz sprawdzić aktualny procent ukończenia poziomu oraz czas gry. Twój wynik zostanie wyświetlony po zakończeniu poziomu, a jeżeli jest on jednym z twoich najwuższych wyników, pojawi się możliwość jego zapisu.
-   
+W celu urochomienia gry należy pobrać najnowsze wydanie z zakładki releases i uruchomić plik .exe
+
+### Komilacja kodu źródłowego
+W celu własnoręczne zbudowania aplikacji należy sklonować repozytorium lub pobrać kod źródłowy jednej ze staszych wersji.
+
+Po uruchomieniu gry wybierz tryb oraz pozion trudności w menu głównym. Podążaj za wyświetlanymi na ekranie instrukcjami. W prawym górnym rogu ekranu możesz sprawdzić aktualny procent ukończenia poziomu oraz czas gry. Twój wynik zostanie wyświetlony po zakończeniu poziomu, a jeżeli jest on jednym z twoich najwyższych wyników, pojawi się możliwość jego zapisu.
+
+Wewnątrz sklonowanego repozytorium należy utworzyć nowe venv pythona o wersji 3.11
+  ```bash
+  python -m venv .venv
+  ```
+Po uruchomieniu wirtualnego środowiska należy popbrać niezbędne zależności opisane w pliku pyproject.toml
+```bash
+pip install .
+```
+
+## Zależności
+Biblioteki i narzedzia niezbędne do działania programu
+| Biblioteka | Wersja |
+| --- | --- |
+| Python | >= 3.11 |
+| Pygame-ce | >= 2.4 |
+| pygame_gui | == 0.6.10 |
+
+
 ## Przyszłe implementacje
 
 ## Źródła
