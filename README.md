@@ -27,10 +27,10 @@ https://aghedupl-my.sharepoint.com/:u:/g/personal/kmazur_student_agh_edu_pl/Eekc
 ## Instalacja
 W celu urochomienia gry należy pobrać najnowsze wydanie z zakładki releases i uruchomić plik .exe
 
+Po uruchomieniu gry wybierz tryb oraz pozion trudności w menu głównym. Podążaj za wyświetlanymi na ekranie instrukcjami. W prawym górnym rogu ekranu możesz sprawdzić aktualny procent ukończenia poziomu oraz czas gry. Twój wynik zostanie wyświetlony po zakończeniu poziomu, a jeżeli jest on jednym z twoich najwyższych wyników, pojawi się możliwość jego zapisu.
+
 ### Komilacja kodu źródłowego
 W celu własnoręczne zbudowania aplikacji należy sklonować repozytorium lub pobrać kod źródłowy jednej ze staszych wersji.
-
-Po uruchomieniu gry wybierz tryb oraz pozion trudności w menu głównym. Podążaj za wyświetlanymi na ekranie instrukcjami. W prawym górnym rogu ekranu możesz sprawdzić aktualny procent ukończenia poziomu oraz czas gry. Twój wynik zostanie wyświetlony po zakończeniu poziomu, a jeżeli jest on jednym z twoich najwyższych wyników, pojawi się możliwość jego zapisu.
 
 Wewnątrz sklonowanego repozytorium należy utworzyć nowe venv pythona o wersji 3.11
   ```bash
