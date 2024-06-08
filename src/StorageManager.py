@@ -1,4 +1,5 @@
 import json
+import os
 from typing import Dict, List
 from src.Enumerators import Difficulty, Mode
 from src.Score import Score
@@ -19,6 +20,10 @@ class StorageManager:
     def _init(self):
         self._player_scores = {}
         self._quotes = {}
+
+        if not os.path.isdir('./data/savefiles'):
+            os.makedirs('./data/savefiles')
+
         self._quotes_path_list = {
             Difficulty.Easy: "./resources/texts/easy_quotes.txt",
             Difficulty.Medium: "./resources/texts/medium_quotes.txt",
@@ -79,9 +84,8 @@ class StorageManager:
 
                 return scores
         except Exception as e:
-            print(f"Error loading player scores: {e}")
+            return []
 
-        return []
 
     def load_quotes(self, diff: Difficulty, mode: Mode) -> bool:
         """
@@ -94,7 +98,6 @@ class StorageManager:
                 self._quotes[diff] = [line.strip() for line in f if line.strip()]
             return True
         except Exception as e:
-            print(f"Error loading quotes: {e}")
             return False
 
     def get_quotes(self, diff: Difficulty, mode: Mode) -> List[str]:
