@@ -1,4 +1,5 @@
 import json
+import os
 from typing import Dict, List
 from src.Enumerators import Difficulty, Mode
 from src.Score import Score
@@ -19,6 +20,10 @@ class StorageManager:
     def _init(self):
         self._player_scores = {}
         self._quotes = {}
+
+        if not os.path.isdir('./data/savefiles'):
+            os.makedirs('./data/savefiles')
+
         self._quotes_path_list = {
             Difficulty.Easy: "./resources/texts/easy_quotes.txt",
             Difficulty.Medium: "./resources/texts/medium_quotes.txt",
