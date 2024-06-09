@@ -13,11 +13,11 @@ Mistrz Klawiatury to gra w której zadaniem gracza jest możliwie jak najszybsze
 
 ### Funkcje gry
 
-- **Tryb gry**: wybieraj spośród trzech trybów gry
+- **Tryb gry**: wybieraj spośród różnych trybów gry
   
   - Tryb klasyczny - podstawowy tryb gry, polegający na przepisywaniu wyświetlanego tekstu zdanie po zdaniu.
   - Tryb Spadające Literki - tryb skupiony na szybkości reakcji gracza. Naciśnij odpowiedni klawisz zanim literka spadnie na dół ekranu, zakańczając grę.
-  - Tryb Wyzwanie -
+
     
 - **Poziom trudności**: graj w każdy z trybów na trzech poziomach trudności
   
@@ -51,8 +51,21 @@ Biblioteki i narzedzia niezbędne do działania programu
 
 
 ## Przyszłe implementacje
+**Nowe tryby gry**:
+- tryb Wyzwanie - każda pomyłka powoduje utratę punktów
+- tryb Czytanie - wybież jeden z dostępnych tekstów i przepisuj go linijka po linijce. Punktacja trybu klasycznego.
+- tryb Trening - tryb skupiony na ćwiczeniu wybranego zestawu kombinacji znaków. Tryb nie rankingowy.
+- tryb Quick-response - jak najszynciej naciśnij klawisz wyświetlony na ekranie
+
+**Dodatkowe teksty**
+
+Dodanie funkcji losowania lub wyboru tekstu dla poszczególnych poziomów trudności 
 
 ## Źródła
-Do stworzenia grzy urzyto następujących tekstów:
+Do stworzenia grzy użyto następujących tekstów:
+- "Muzykanci z Bremy", Bracia Grimm
+- "Illiada", Homer
+- "Lalka", Bolesław Prus
+- "Badanie ciał radioaktywnych" Maria Skłodowska-Curie
 
 
