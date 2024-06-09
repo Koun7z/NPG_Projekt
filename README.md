@@ -29,7 +29,7 @@ W celu urochomienia gry należy pobrać najnowsze wydanie z zakładki releases i
 
 Po uruchomieniu gry wybierz tryb oraz pozion trudności w menu głównym. Podążaj za wyświetlanymi na ekranie instrukcjami. W prawym górnym rogu ekranu możesz sprawdzić aktualny procent ukończenia poziomu oraz czas gry. Twój wynik zostanie wyświetlony po zakończeniu poziomu, a jeżeli jest on jednym z twoich najwyższych wyników, pojawi się możliwość jego zapisu.
 
-### Komilacja kodu źródłowego
+### Kompilacja kodu źródłowego
 W celu własnoręczne zbudowania aplikacji należy sklonować repozytorium lub pobrać kod źródłowy jednej ze staszych wersji.
 
 Wewnątrz sklonowanego repozytorium należy utworzyć nowe venv pythona o wersji 3.11
